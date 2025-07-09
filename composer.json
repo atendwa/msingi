@@ -1,24 +1,34 @@
 {
-    "name": ":vendor_slug/:package_slug",
-    "description": ":package_description",
+    "name": "atendwa/msingi",
+    "description": "This is my package msingi",
     "keywords": [
-        ":vendor_name",
+        "atendwa",
         "laravel",
-        ":package_slug"
+        "msingi"
     ],
-    "homepage": "https://github.com/:vendor_slug/:package_slug",
+    "homepage": "https://github.com/atendwa/msingi",
     "license": "MIT",
     "authors": [
         {
-            "name": ":author_name",
-            "email": "author@domain.com",
+            "name": "atendwa",
+            "email": "atendwa@gmail.com",
             "role": "Developer"
         }
     ],
     "require": {
-        "php": "^8.4",
-        "spatie/laravel-package-tools": "^1.16",
-        "illuminate/contracts": "^10.0||^11.0||^12.0"
+        "php": "^8.2",
+        "atendwa/filakit": "^1.0",
+        "atendwa/seedtrack": "*",
+        "atendwa/settings": "^1.0",
+        "atendwa/support": "^1.0",
+        "atendwa/whitelist": "*",
+        "illuminate/contracts": "^10.0||^11.0||^12.0",
+        "laravel/horizon": "^5.33",
+        "laravel/pulse": "^1.4",
+        "laravel/sanctum": "*",
+        "laravel/telescope": "^5.9",
+        "spatie/laravel-activitylog": "*",
+        "spatie/laravel-permission": "^6.20"
     },
     "require-dev": {
         "laravel/pint": "^1.14",
@@ -35,14 +45,14 @@
     },
     "autoload": {
         "psr-4": {
-            "VendorName\\Skeleton\\": "src/",
-            "VendorName\\Skeleton\\Database\\Factories\\": "database/factories/"
-        }
+            "Atendwa\\Msingi\\": "src/",
+            "Atendwa\\Msingi\\Database\\Seeders\\": "database/seeders/"
+        },
+        "files": ["src/helpers.php"]
     },
     "autoload-dev": {
         "psr-4": {
-            "VendorName\\Skeleton\\Tests\\": "tests/",
-            "Workbench\\App\\": "workbench/app/"
+            "Atendwa\\Msingi\\Tests\\": "tests/"
         }
     },
     "scripts": {
@@ -63,11 +73,8 @@
     "extra": {
         "laravel": {
             "providers": [
-                "VendorName\\Skeleton\\SkeletonServiceProvider"
-            ],
-            "aliases": {
-                "Skeleton": "VendorName\\Skeleton\\Facades\\Skeleton"
-            }
+                "Atendwa\\Msingi\\MsingiServiceProvider"
+            ]
         }
     },
     "minimum-stability": "dev",
