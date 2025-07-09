@@ -13,7 +13,7 @@ if (! function_exists('systemUsername')) {
      */
     function systemUsername(): string
     {
-        $username = asString(setting('auth:systemUsername'));
+        $username = asString(setting('auth:system_username'));
 
         throw_if(blank($username), 'System username not set.');
 
