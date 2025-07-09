@@ -6,6 +6,7 @@ use Atendwa\Filakit\Panel;
 use Atendwa\Filakit\PanelProvider;
 use Atendwa\Msingi\Concerns\Models\AccessSystemInsights;
 use Atendwa\Msingi\Concerns\Models\HasAuditAttributes;
+use Atendwa\Msingi\Contracts\Auditable;
 use Atendwa\Msingi\Contracts\InsightsUser;
 use Atendwa\Support\Concerns\Models\HasModelUtilities;
 use Atendwa\Support\Concerns\Models\SanitiseNullableColumns;
@@ -27,7 +28,7 @@ use Laravel\Sanctum\HasApiTokens;
 use Spatie\Permission\Traits\HasRoles;
 use Throwable;
 
-class BaseUser extends User implements HasAvatar, InsightsUser
+class BaseUser extends User implements Auditable, HasAvatar, InsightsUser
 {
     use AccessSystemInsights;
     use CanBeWhitelisted;
