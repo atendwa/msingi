@@ -47,6 +47,6 @@ class MsingiServiceProvider extends ServiceProvider
         DB::prohibitDestructiveCommands($this->app->isProduction());
         Model::shouldBeStrict();
 
-//        config()->set('authentication.masquerade_username', systemUsername());
+        //        config()->set('authentication.masquerade_username', systemUsername());
     }
 }
