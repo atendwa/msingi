@@ -18,7 +18,7 @@ trait HasCategorySeederSetup
         Category::query()->updateOrCreate(['name' => $name], $data);
 
         collect($items)->each(
-            fn ($type) => Category::query()->updateOrCreate(['name' => $type], [array_merge($data, ['group' => $name])])
+            fn ($type) => Category::query()->updateOrCreate(['name' => $type], array_merge($data, ['group' => $name]))
         );
     }
 }
