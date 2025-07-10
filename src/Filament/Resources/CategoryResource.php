@@ -27,7 +27,6 @@ class CategoryResource extends Resource
 
     protected static ?string $cluster = BasicData::class;
 
-
     protected static ?string $model = Category::class;
 
     protected static ?int $navigationSort = 7;
