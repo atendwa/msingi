@@ -17,7 +17,7 @@ class PageVisitActivityLogMiddleware
 
         $response = $next($request);
 
-        \Illuminate\Support\defer(function () use ($request, $user) {
+        \Illuminate\Support\defer(function () use ($request, $user): void {
             activity()->useLog('Page Visits')->causedBy($user)->event('Page Visit')->performedOn($user)
                 ->withProperties([
                     'user_agent' => $request->userAgent(),
