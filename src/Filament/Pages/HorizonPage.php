@@ -12,7 +12,9 @@ class HorizonPage extends Page
 {
     use HasInsightPageGate;
 
-    protected static bool $shouldRegisterNavigation = false;
+    protected static ?string $activeNavigationIcon = 'heroicon-s-heroicon-o-queue-list';
+
+    protected static ?string $navigationIcon = 'heroicon-o-heroicon-s-queue-list';
 
     protected static string $view = 'msingi::filament.horizon';
 
