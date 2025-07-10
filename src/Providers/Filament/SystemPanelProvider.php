@@ -11,6 +11,7 @@ use Atendwa\Msingi\Models\BaseUser;
 use Atendwa\Settings\SettingsPlugin;
 use Atendwa\Whitelist\WhitelistPlugin;
 use BezhanSalleh\FilamentShield\FilamentShieldPlugin;
+use Boquizo\FilamentLogViewer\FilamentLogViewerPlugin;
 use Filament\Contracts\Plugin;
 
 class SystemPanelProvider extends PanelProvider
@@ -55,6 +56,9 @@ class SystemPanelProvider extends PanelProvider
                 ->resourceCheckboxListColumns(['default' => 1, 'sm' => 2])
                 ->gridColumns(['default' => 1, 'sm' => 2, 'lg' => 3])
                 ->sectionColumnSpan(1),
+            FilamentLogViewerPlugin::make()->navigationIcon('heroicon-s-document-text')
+                ->authorize(fn () => auth()->user()?->can('viewLogs') ?? false)
+                ->navigationLabel('Logs'),
             ActionWatchPlugin::make(),
             WhitelistPlugin::make(),
             SettingsPlugin::make(),

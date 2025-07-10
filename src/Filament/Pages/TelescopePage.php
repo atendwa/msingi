@@ -16,8 +16,6 @@ class TelescopePage extends Page
 
     protected static ?string $navigationIcon = 'heroicon-o-magnifying-glass';
 
-    protected static bool $shouldRegisterNavigation = false;
-
     protected static ?string $permission = 'viewTelescope';
 
     protected static ?string $cluster = Insights::class;

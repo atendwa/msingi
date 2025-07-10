@@ -20,7 +20,7 @@ class SeedPermissions extends Seeder
      */
     public function execute(): void
     {
-        $inspect = ['viewInsights', 'viewPulse', 'viewHorizon', 'viewTelescope'];
+        $inspect = ['viewInsights', 'viewPulse', 'viewHorizon', 'viewTelescope', 'viewLogs'];
         $this->permissions($inspect);
 
         Role::updateOrCreate(['name' => 'Developer'], ['name' => 'Developer'])->givePermissionTo($inspect);

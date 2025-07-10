@@ -23,6 +23,7 @@
         "atendwa/settings": "^1.0",
         "atendwa/support": "^1.0",
         "atendwa/whitelist": "*",
+        "gboquizosanchez/filament-log-viewer": "^1.2",
         "hasnayeen/themes": "^3.0",
         "illuminate/contracts": "^10.0||^11.0||^12.0",
         "laravel/horizon": "^5.33",
