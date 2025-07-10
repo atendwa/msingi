@@ -16,6 +16,8 @@ class TelescopePage extends Page
 
     protected static ?string $navigationIcon = 'heroicon-o-magnifying-glass';
 
+    protected static string $view = 'msingi::filament.telescope';
+
     protected static ?string $permission = 'viewTelescope';
 
     protected static ?string $cluster = Insights::class;
