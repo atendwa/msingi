@@ -8,6 +8,7 @@ use Atendwa\Msingi\Model;
 use Atendwa\Support\Concerns\Models\UsesSlugs;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Support\Facades\DB;
 
 class Tenant extends Model
@@ -62,6 +63,14 @@ class Tenant extends Model
     public function head(): BelongsTo
     {
         return $this->belongsTo(BaseUser::class, 'head_username', 'username');
+    }
+
+    /**
+     * @return BelongsTo<Department, $this>
+     */
+    public function department(): BelongsTo
+    {
+        return $this->belongsTo(Department::class, 'department_short_name', 'short_name');
     }
 
     /**

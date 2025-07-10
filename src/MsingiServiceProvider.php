@@ -13,6 +13,7 @@ use Atendwa\Msingi\Providers\TelescopeServiceProvider;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Foundation\AliasLoader;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\URL;
 use Illuminate\Support\ServiceProvider;
 use Throwable;
 
@@ -56,5 +57,7 @@ class MsingiServiceProvider extends ServiceProvider
         if (! app()->runningInConsole() && app()->isLocal()) {
             config()->set('authentication.masquerade_username', systemUsername());
         }
+
+        when(config('app.scheme') === 'https', fn () => URL::forceScheme('https'));
     }
 }

@@ -10,4 +10,6 @@ use Atendwa\Msingi\Filament\Resources\TenantResource;
 class ViewTenant extends ViewRecord
 {
     protected static string $resource = TenantResource::class;
+
+    protected array $relations = [['relation' => 'department']];
 }

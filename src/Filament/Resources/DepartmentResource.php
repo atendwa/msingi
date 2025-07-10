@@ -15,6 +15,8 @@ use Atendwa\Msingi\Models\Department;
 use Filament\Forms\Form;
 use Filament\Resources\Pages\PageRegistration;
 use Filament\Tables\Table;
+use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Model;
 use Throwable;
 
 class DepartmentResource extends Resource
@@ -40,6 +42,14 @@ class DepartmentResource extends Resource
             textInput('sync_id', false)->numeric(),
             toggle(),
         ]);
+    }
+
+    /**
+     * @return Builder<Model>
+     */
+    public static function getEloquentQuery(): Builder
+    {
+        return self::baseQuery()->with('tenant');
     }
 
     /**

@@ -9,6 +9,7 @@ use Atendwa\Support\Concerns\Models\UsesSlugs;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
+use Throwable;
 
 class Department extends Model
 {
@@ -69,28 +70,32 @@ class Department extends Model
         return $this->belongsTo(BaseUser::class, 'delegate_username', 'username');
     }
 
-    protected static function booted(): void
+    /**
+     * @throws Throwable
+     */
+    public static function updateOrCreateTenant(Department $department, bool $force = false): void
     {
-        parent::created(fn (Department $department) => self::updateOrCreateTenant($department));
-        parent::updated(fn (Department $department) => self::updateOrCreateTenant($department));
-    }
-
-    private static function updateOrCreateTenant(Department $department): void
-    {
-        if (! config('foundation.departments.auto_create_department_tenant')) {
+        if (! config('foundation.departments.auto_create_department_tenant') && ! $force) {
             return;
         }
 
         $stringable = str($department->name())->headline()->squish();
+        $username = systemUser()->getAttribute('username');
 
         $department->tenant()->updateOrCreate(['department_short_name' => $department->getAttribute('slug')], [
-            'delegate_username' => $department->getAttribute('delegate_username'),
-            'head_username' => $department->getAttribute('head_username'),
+            'delegate_username' => $department->getAttribute('delegate_username') ?? $username,
+            'head_username' => $department->getAttribute('head_username') ?? $username,
             'department_short_name' => $department->getAttribute('slug'),
             'description' => $stringable->lower()->title()->toString(),
             'owner_type' => $department->getMorphClass(),
             'owner_id' => $department->getKey(),
             'name' => $stringable->toString(),
         ]);
+    }
+
+    protected static function booted(): void
+    {
+        parent::created(fn (Department $department) => self::updateOrCreateTenant($department));
+        parent::updated(fn (Department $department) => self::updateOrCreateTenant($department));
     }
 }
