@@ -17,11 +17,13 @@
     ],
     "require": {
         "php": "^8.2",
+        "atendwa/action-watch": "^1.0",
         "atendwa/filakit": "^1.0",
         "atendwa/seedtrack": "*",
         "atendwa/settings": "^1.0",
         "atendwa/support": "^1.0",
         "atendwa/whitelist": "*",
+        "hasnayeen/themes": "^3.0",
         "illuminate/contracts": "^10.0||^11.0||^12.0",
         "laravel/horizon": "^5.33",
         "laravel/pulse": "^1.4",

@@ -4,6 +4,7 @@ namespace Atendwa\Msingi;
 
 use Atendwa\Msingi\Commands\CheckHorizonStatus;
 use Atendwa\Msingi\Commands\InstallMsingi;
+use Atendwa\Msingi\Providers\Filament\SystemPanelProvider;
 use Atendwa\Msingi\Providers\HorizonServiceProvider;
 use Atendwa\Msingi\Providers\MacroServiceProvider;
 use Atendwa\Msingi\Providers\PulseServiceProvider;
@@ -23,6 +24,7 @@ class MsingiServiceProvider extends ServiceProvider
         $this->app->register(HorizonServiceProvider::class);
         $this->app->register(PulseServiceProvider::class);
         $this->app->register(MacroServiceProvider::class);
+        $this->app->register(SystemPanelProvider::class);
     }
 
     /**

@@ -379,9 +379,17 @@ class BaseUser extends User implements Auditable, FilamentUser, HasAvatar, HasTe
         ];
     }
 
+    /**
+     * @return Attribute<int, string>
+     */
     protected function roleNames(): Attribute
     {
         return Attribute::make(fn () => collect($this->roles->pluck('name'))->map(fn ($role) => headline($role))->implode(', '));
+    }
+
+    public function isPrivileged(): bool
+    {
+        return $this->roles->pluck('name')->except('panel_user')->count() > 0;
     }
 
     /**

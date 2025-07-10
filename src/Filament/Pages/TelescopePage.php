@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Atendwa\Msingi\Filament\Pages;
 
 use Atendwa\Msingi\Concerns\Support\HasInsightPageGate;
+use Atendwa\Msingi\Filament\Clusters\Insights;
 use Filament\Pages\Page;
 
 class TelescopePage extends Page
@@ -16,6 +17,8 @@ class TelescopePage extends Page
     protected static bool $shouldRegisterNavigation = false;
 
     protected static ?string $permission = 'viewTelescope';
+
+    protected static ?string $cluster = Insights::class;
 
     protected static ?string $slug = 'telescope';
 

@@ -6,7 +6,7 @@ namespace Atendwa\Msingi\Filament\Resources;
 
 use Atendwa\Filakit\Concerns\CustomizesFilamentResource;
 use Atendwa\Filakit\Resource;
-use Atendwa\Msingi\Filament\Clusters\BasicData;
+use Atendwa\Msingi\Filament\Clusters\Core;
 use Atendwa\Msingi\Filament\Resources\ActivityLogResource\Pages\ListActivityLogs;
 use Atendwa\Msingi\Filament\Resources\ActivityLogResource\Pages\ViewActivityLog;
 use Atendwa\Msingi\Models\ActivityLog;
@@ -24,7 +24,7 @@ class ActivityLogResource extends Resource
 
     protected static ?string $recordTitleAttribute = 'event';
 
-    protected static ?string $cluster = BasicData::class;
+    protected static ?string $cluster = Core::class;
 
     protected static ?string $model = ActivityLog::class;
 

@@ -6,9 +6,9 @@ namespace Atendwa\Msingi\Filament\Clusters;
 
 use Filament\Clusters\Cluster;
 
-class BasicData extends Cluster
+class Core extends Cluster
 {
-    protected static ?string $navigationIcon = 'heroicon-o-rocket-launch';
+    protected static ?string $navigationIcon = 'heroicon-o-cube-transparent';
 
     protected static ?int $navigationSort = -1;
 }
