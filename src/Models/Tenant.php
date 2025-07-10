@@ -8,7 +8,6 @@ use Atendwa\Msingi\Model;
 use Atendwa\Support\Concerns\Models\UsesSlugs;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
-use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Support\Facades\DB;
 
 class Tenant extends Model
