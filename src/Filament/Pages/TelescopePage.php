@@ -12,9 +12,9 @@ class TelescopePage extends Page
 {
     use HasInsightPageGate;
 
-    protected static ?string $activeNavigationIcon = 'heroicon-s-presentation-chart-line';
+    protected static ?string $activeNavigationIcon = 'heroicon-s-magnifying-glass';
 
-    protected static ?string $navigationIcon = 'heroicon-s-magnifying-glass';
+    protected static ?string $navigationIcon = 'heroicon-o-magnifying-glass';
 
     protected static bool $shouldRegisterNavigation = false;
 
