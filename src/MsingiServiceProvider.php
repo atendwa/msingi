@@ -4,12 +4,14 @@ namespace Atendwa\Msingi;
 
 use Atendwa\Msingi\Commands\CheckHorizonStatus;
 use Atendwa\Msingi\Commands\InstallMsingi;
+use Atendwa\Msingi\Http\Middleware\PageVisitActivityLogMiddleware;
 use Atendwa\Msingi\Providers\Filament\SystemPanelProvider;
 use Atendwa\Msingi\Providers\HorizonServiceProvider;
 use Atendwa\Msingi\Providers\MacroServiceProvider;
 use Atendwa\Msingi\Providers\PulseServiceProvider;
 use Atendwa\Msingi\Providers\TelescopeServiceProvider;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Foundation\AliasLoader;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\ServiceProvider;
 use Throwable;
@@ -18,6 +20,7 @@ class MsingiServiceProvider extends ServiceProvider
 {
     public function register(): void
     {
+        AliasLoader::getInstance()->alias('page-visit-logger', PageVisitActivityLogMiddleware::class);
         $this->mergeConfigFrom(__DIR__ . '/../config/msingi.php', 'msingi');
 
         $this->app->register(TelescopeServiceProvider::class);

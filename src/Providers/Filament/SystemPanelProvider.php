@@ -7,6 +7,7 @@ use Atendwa\Filakit\Panel;
 use Atendwa\Filakit\PanelProvider;
 use Atendwa\Msingi\Concerns\Support\HasPanelSetup;
 use Atendwa\Msingi\Filament\Pages\Dashboard;
+use Atendwa\Msingi\Http\Middleware\PageVisitActivityLogMiddleware;
 use Atendwa\Msingi\Models\BaseUser;
 use Atendwa\Settings\SettingsPlugin;
 use Atendwa\Whitelist\WhitelistPlugin;
@@ -24,7 +25,7 @@ class SystemPanelProvider extends PanelProvider
 
     public function panel(Panel $panel): Panel
     {
-        return $this->setupPanel($panel)
+        return $this->setupPanel($panel)->middleware([PageVisitActivityLogMiddleware::class])
             ->discoverResources(__DIR__ . '/../../Filament/Resources', 'Atendwa\\Msingi\\Filament\\Resources')
             ->discoverClusters(__DIR__ . '/../../Filament/Clusters', 'Atendwa\\Msingi\\Filament\\Clusters')
             ->discoverResources(app_path('Filament/System/Resources'), 'App\\Filament\\System\\Resources')

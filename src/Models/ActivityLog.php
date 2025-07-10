@@ -17,7 +17,7 @@ class ActivityLog extends Activity implements HasFilamentTabs, HasIcon
     public static function getFilamentTabs(): array
     {
         return [
-            'Authentication',
+            'Authentication', 'Page Visits',
         ];
     }
 
