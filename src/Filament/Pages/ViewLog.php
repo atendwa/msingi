@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Atendwa\Msingi\Filament\Custom;
+namespace Atendwa\Msingi\Filament\Pages;
 
 use Atendwa\Msingi\Filament\Clusters\Insights;
 
-class ListLogs extends \Boquizo\FilamentLogViewer\Pages\ListLogs
+class ViewLog extends \Boquizo\FilamentLogViewer\Pages\ViewLog
 {
     public static function getNavigationGroup(): ?string
     {
