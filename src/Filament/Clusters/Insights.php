@@ -10,5 +10,5 @@ class Insights extends Cluster
 {
     protected static ?string $navigationIcon = 'heroicon-o-chart-bar';
 
-//    protected static ?int $navigationSort = -1;
+    //    protected static ?int $navigationSort = -1;
 }
