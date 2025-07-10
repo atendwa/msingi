@@ -15,6 +15,8 @@ use Filament\Forms\Components\DatePicker;
 use Filament\Forms\Form;
 use Filament\Resources\Pages\PageRegistration;
 use Filament\Tables\Table;
+use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Model;
 use Throwable;
 
 class ApiKeyResource extends Resource
@@ -22,6 +24,8 @@ class ApiKeyResource extends Resource
     use CustomizesFilamentResource;
 
     protected static ?string $cluster = Core::class;
+
+    protected static bool $useIsActiveFilter = false;
 
     protected static ?string $model = ApiKey::class;
 
@@ -48,6 +52,14 @@ class ApiKeyResource extends Resource
         ]);
 
         return self::customTable();
+    }
+
+    /**
+     * @return Builder<Model>
+     */
+    public static function baseQuery(): Builder
+    {
+        return parent::getEloquentQuery();
     }
 
     /**
