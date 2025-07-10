@@ -24,6 +24,10 @@ class ActivityLogResource extends Resource
 
     protected static ?string $recordTitleAttribute = 'event';
 
+    protected static ?string $activeNavigationIcon = 'heroicon-s-document-text';
+
+    protected static ?string $navigationIcon = 'heroicon-o-document-text';
+
     protected static ?string $model = ActivityLog::class;
 
     protected static ?string $cluster = Core::class;
