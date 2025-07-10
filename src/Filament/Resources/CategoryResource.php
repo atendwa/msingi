@@ -6,7 +6,7 @@ namespace Atendwa\Msingi\Filament\Resources;
 
 use Atendwa\Filakit\Concerns\CustomizesFilamentResource;
 use Atendwa\Filakit\Resource;
-use Atendwa\Msingi\Filament\Clusters\Foundation;
+use Atendwa\Msingi\Filament\Clusters\BasicData;
 use Atendwa\Msingi\Filament\Resources\CategoryResource\Pages\CreateCategory;
 use Atendwa\Msingi\Filament\Resources\CategoryResource\Pages\EditCategory;
 use Atendwa\Msingi\Filament\Resources\CategoryResource\Pages\ListCategories;
@@ -25,7 +25,8 @@ class CategoryResource extends Resource
 {
     use CustomizesFilamentResource;
 
-    protected static ?string $cluster = Foundation::class;
+    protected static ?string $cluster = BasicData::class;
+
 
     protected static ?string $model = Category::class;
 

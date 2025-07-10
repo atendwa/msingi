@@ -372,7 +372,6 @@ class BaseUser extends User implements Auditable, HasAvatar, InsightsUser
     protected function casts(): array
     {
         return [
-            'thumbnail_updated_at' => 'datetime',
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
         ];

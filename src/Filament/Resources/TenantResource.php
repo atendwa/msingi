@@ -6,7 +6,7 @@ namespace Atendwa\Msingi\Filament\Resources;
 
 use Atendwa\Filakit\Concerns\CustomizesFilamentResource;
 use Atendwa\Filakit\Resource;
-use Atendwa\Msingi\Filament\Clusters\Foundation;
+use Atendwa\Msingi\Filament\Clusters\BasicData;
 use Atendwa\Msingi\Filament\Resources\TenantResource\Pages\CreateTenant;
 use Atendwa\Msingi\Filament\Resources\TenantResource\Pages\EditTenant;
 use Atendwa\Msingi\Filament\Resources\TenantResource\Pages\ListTenants;
@@ -21,7 +21,7 @@ class TenantResource extends Resource
 {
     use CustomizesFilamentResource;
 
-    protected static ?string $cluster = Foundation::class;
+    protected static ?string $cluster = BasicData::class;
 
     protected static ?string $model = Tenant::class;
 

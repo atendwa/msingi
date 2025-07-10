@@ -6,7 +6,7 @@ namespace Atendwa\Msingi\Filament\Resources;
 
 use Atendwa\Filakit\Concerns\CustomizesFilamentResource;
 use Atendwa\Filakit\Resource;
-use Atendwa\Msingi\Filament\Clusters\Foundation;
+use Atendwa\Msingi\Filament\Clusters\BasicData;
 use Atendwa\Msingi\Filament\Resources\DepartmentResource\Pages\CreateDepartment;
 use Atendwa\Msingi\Filament\Resources\DepartmentResource\Pages\EditDepartment;
 use Atendwa\Msingi\Filament\Resources\DepartmentResource\Pages\ListDepartments;
@@ -21,7 +21,7 @@ class DepartmentResource extends Resource
 {
     use CustomizesFilamentResource;
 
-    protected static ?string $cluster = Foundation::class;
+    protected static ?string $cluster = BasicData::class;
 
     protected static ?string $model = Department::class;
 

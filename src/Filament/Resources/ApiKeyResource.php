@@ -6,7 +6,7 @@ namespace Atendwa\Msingi\Filament\Resources;
 
 use Atendwa\Filakit\Concerns\CustomizesFilamentResource;
 use Atendwa\Filakit\Resource;
-use Atendwa\Msingi\Filament\Clusters\Foundation;
+use Atendwa\Msingi\Filament\Clusters\BasicData;
 use Atendwa\Msingi\Filament\Resources\ApiKeyResource\Pages\CreateApiKeys;
 use Atendwa\Msingi\Filament\Resources\ApiKeyResource\Pages\ListApiKeys;
 use Atendwa\Msingi\Filament\Resources\ApiKeyResource\Pages\ViewApiKeys;
@@ -21,7 +21,8 @@ class ApiKeyResource extends Resource
 {
     use CustomizesFilamentResource;
 
-    protected static ?string $cluster = Foundation::class;
+    protected static ?string $cluster = BasicData::class;
+
 
     protected static ?string $model = ApiKey::class;
 
