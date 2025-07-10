@@ -23,7 +23,6 @@ class ApiKeyResource extends Resource
 
     protected static ?string $cluster = BasicData::class;
 
-
     protected static ?string $model = ApiKey::class;
 
     protected static ?int $navigationSort = 4;
