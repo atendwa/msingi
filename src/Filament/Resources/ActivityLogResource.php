@@ -24,9 +24,9 @@ class ActivityLogResource extends Resource
 
     protected static ?string $recordTitleAttribute = 'event';
 
-    protected static ?string $cluster = Core::class;
-
     protected static ?string $model = ActivityLog::class;
+
+    protected static ?string $cluster = Core::class;
 
     protected static ?int $navigationSort = 4;
 

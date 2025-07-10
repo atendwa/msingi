@@ -4,13 +4,13 @@ declare(strict_types=1);
 
 namespace Atendwa\Msingi\Models;
 
-use Atendwa\Support\Concerns\Models\HasModelUtilities;
 use Atendwa\Support\Contracts\HasFilamentTabs;
+use Filament\Support\Contracts\HasIcon;
 use Spatie\Activitylog\Models\Activity;
 
-class ActivityLog extends Activity implements HasFilamentTabs
+class ActivityLog extends Activity implements HasFilamentTabs, HasIcon
 {
-    use HasModelUtilities;
+    public string $icon = 'heroicon-o-document-text';
 
     protected $table = 'activity_log';
 
@@ -29,5 +29,10 @@ class ActivityLog extends Activity implements HasFilamentTabs
     public function finalSuccessState(): string
     {
         return '';
+    }
+
+    public function getIcon(): ?string
+    {
+        return $this->icon;
     }
 }
