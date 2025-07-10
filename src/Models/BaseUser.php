@@ -12,7 +12,9 @@ use Atendwa\Support\Concerns\Models\HasModelUtilities;
 use Atendwa\Support\Concerns\Models\SanitiseNullableColumns;
 use Atendwa\Whitelist\Concerns\CanBeWhitelisted;
 use Exception;
+use Filament\Models\Contracts\FilamentUser;
 use Filament\Models\Contracts\HasAvatar;
+use Filament\Models\Contracts\HasTenants;
 use Illuminate\Database\Eloquent\Attributes\Scope;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Casts\Attribute;
@@ -28,7 +30,7 @@ use Laravel\Sanctum\HasApiTokens;
 use Spatie\Permission\Traits\HasRoles;
 use Throwable;
 
-class BaseUser extends User implements Auditable, HasAvatar, InsightsUser
+class BaseUser extends User implements Auditable, FilamentUser, HasAvatar, HasTenants, InsightsUser
 {
     use AccessSystemInsights;
     use CanBeWhitelisted;
