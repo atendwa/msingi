@@ -2,7 +2,6 @@
 
 namespace Atendwa\Msingi\Filament\Pages;
 
-use App\Filament\Home\Widgets\DashboardWidget;
 use BezhanSalleh\FilamentShield\Traits\HasPageShield;
 
 class Dashboard extends \Filament\Pages\Dashboard

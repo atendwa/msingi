@@ -46,7 +46,6 @@ class SystemPanelProvider extends PanelProvider
     }
 
     /**
-     * @param  Panel  $panel
      * @return Plugin[]
      */
     protected function plugins(Panel $panel): array
