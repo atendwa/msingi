@@ -73,16 +73,16 @@ class Department extends Model
     /**
      * @throws Throwable
      */
-    public static function updateOrCreateTenant(Department $department, bool $force = false): void
+    public static function updateOrCreateTenant(Department $department, bool $force = false): ?Tenant
     {
         if (! config('foundation.departments.auto_create_department_tenant') && ! $force) {
-            return;
+            return null;
         }
 
         $stringable = str($department->name())->headline()->squish();
         $username = systemUser()->getAttribute('username');
 
-        $department->tenant()->updateOrCreate(['department_short_name' => $department->getAttribute('slug')], [
+        return $department->tenant()->updateOrCreate(['department_short_name' => $department->getAttribute('slug')], [
             'delegate_username' => $department->getAttribute('delegate_username') ?? $username,
             'head_username' => $department->getAttribute('head_username') ?? $username,
             'department_short_name' => $department->getAttribute('slug'),
