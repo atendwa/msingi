@@ -6,15 +6,27 @@ namespace Atendwa\Msingi\Models;
 
 use Atendwa\Msingi\Model;
 use Atendwa\Support\Concerns\Models\UsesSlugs;
+use Filament\Models\Contracts\HasCurrentTenantLabel;
+use Filament\Models\Contracts\HasName;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Support\Facades\DB;
 
-class Tenant extends Model
+class Tenant extends Model implements HasCurrentTenantLabel, HasName
 {
     use UsesSlugs;
 
     public string $icon = 'heroicon-o-building-office';
+
+    public function getFilamentName(): string
+    {
+        $column = 'department_short_name';
+
+        return match ($this->getAttribute('is_default')) {
+            default => asString($this->getAttribute($column) ?? $this->name()),
+            true => $this->name(),
+        };
+    }
 
     public function getSlugFrom(): string
     {
@@ -78,6 +90,11 @@ class Tenant extends Model
     public function delegate(): BelongsTo
     {
         return $this->belongsTo(BaseUser::class, 'delegate_username', 'username');
+    }
+
+    public function getCurrentTenantLabel(): string
+    {
+        return 'Active Workspace';
     }
 
     protected static function booted(): void

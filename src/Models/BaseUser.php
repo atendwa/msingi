@@ -350,17 +350,15 @@ class BaseUser extends User implements Auditable, FilamentUser, HasAvatar, HasTe
 
     protected static function booted(): void
     {
-        //            parent::creating(function (User $user): void {
-        //                if (blank($user->getAttribute('name'))) {
-        //                    $name = concat([
-        //                        $user->getAttribute('first_name'), ' ',
-        //                        $user->getAttribute('other_names'), ' ',
-        //                        $user->getAttribute('surname'),
-        //                    ]);
-        //
-        //                    $user->setAttribute('name', str($name)->lower()->headline()->trim()->toString());
-        //                }
-        //            });
+        parent::creating(function (User $user): void {
+            if (blank($user->getAttribute('name'))) {
+                $name = $user->getAttribute('first_name') . ' ' .
+                    $user->getAttribute('other_names') . ' ' .
+                    $user->getAttribute('surname');
+
+                $user->setAttribute('name', str($name)->lower()->headline()->squish()->toString());
+            }
+        });
 
         parent::created(function (BaseUser $user): void {
             $column = 'department_short_name';
@@ -397,6 +395,18 @@ class BaseUser extends User implements Auditable, FilamentUser, HasAvatar, HasTe
      */
     private function tenants(): Collection
     {
-        return $this->teams;
+        $shortname = $this->getAttribute('department_short_name');
+        $teams = $this->teams;
+
+        if (blank($shortname)) {
+            return $teams;
+        }
+
+        $filtered = $teams->filter(fn (Tenant $tenant): bool => ! $tenant->getAttribute('is_default'));
+
+        return match ($filtered->isEmpty()) {
+            false => $filtered,
+            true => $teams,
+        };
     }
 }
