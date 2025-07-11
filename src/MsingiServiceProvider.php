@@ -6,6 +6,7 @@ use Atendwa\Msingi\Commands\CheckHorizonStatus;
 use Atendwa\Msingi\Commands\InstallMsingi;
 use Atendwa\Msingi\Http\Middleware\PageVisitActivityLogMiddleware;
 use Atendwa\Msingi\Providers\Filament\SystemPanelProvider;
+use Atendwa\Msingi\Providers\FilamentActionInteractionLoggerServiceProvider;
 use Atendwa\Msingi\Providers\HorizonServiceProvider;
 use Atendwa\Msingi\Providers\MacroServiceProvider;
 use Atendwa\Msingi\Providers\PulseServiceProvider;
@@ -24,6 +25,7 @@ class MsingiServiceProvider extends ServiceProvider
         AliasLoader::getInstance()->alias('page-visit-logger', PageVisitActivityLogMiddleware::class);
         $this->mergeConfigFrom(__DIR__ . '/../config/msingi.php', 'msingi');
 
+        $this->app->register(FilamentActionInteractionLoggerServiceProvider::class);
         $this->app->register(TelescopeServiceProvider::class);
         $this->app->register(HorizonServiceProvider::class);
         $this->app->register(PulseServiceProvider::class);

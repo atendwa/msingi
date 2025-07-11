@@ -6,6 +6,7 @@ use Atendwa\Msingi\Models\BaseUser;
 use Atendwa\Msingi\Models\Category;
 use Atendwa\Msingi\Models\Country;
 use Illuminate\Support\Collection;
+use Spatie\Activitylog\ActivityLogger;
 
 if (! function_exists('systemUsername')) {
     /**
@@ -66,5 +67,19 @@ if (! function_exists('authID')) {
     function authID(): int
     {
         return asInteger(auth()->id() ?? systemUser()->getAttribute('id'));
+    }
+}
+
+if (! function_exists('activityLog')) {
+    function activityLog(): ActivityLogger
+    {
+        $request = request();
+
+        return activity()->withProperties([
+            'user_agent' => $request->userAgent(),
+            'attributes' => $request->collect(),
+            'ip_address' => $request->ip(),
+            'path' => $request->path(),
+        ]);
     }
 }
