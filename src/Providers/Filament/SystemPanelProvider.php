@@ -5,6 +5,7 @@ namespace Atendwa\Msingi\Providers\Filament;
 use Atendwa\ActionWatch\ActionWatchPlugin;
 use Atendwa\Filakit\Panel;
 use Atendwa\Filakit\PanelProvider;
+use Atendwa\Filakit\Utils\PanelPermissionResolver;
 use Atendwa\Msingi\Concerns\Support\HasPanelSetup;
 use Atendwa\Msingi\Filament\Pages\Dashboard;
 use Atendwa\Msingi\Http\Middleware\PageVisitActivityLogMiddleware;
@@ -39,16 +40,10 @@ class SystemPanelProvider extends PanelProvider
             ->discoverPages(app_path('Filament/System/Pages'), 'App\\Filament\\System\\Pages');
     }
 
-    //    public static function canAccess(string $id): bool
-    //    {
-    //        $user = auth()->user();
-    //
-    //        if (! $user instanceof BaseUser) {
-    //            return false;
-    //        }
-    //
-    //        return $user->isPrivileged();
-    //    }
+    public static function canAccess(string $id): bool
+    {
+        return auth()->user()?->can(app(PanelPermissionResolver::class)->execute(self::class)) ?? false;
+    }
 
     /**
      * @return Plugin[]
