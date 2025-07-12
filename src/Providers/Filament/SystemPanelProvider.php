@@ -9,6 +9,7 @@ use Atendwa\Msingi\Concerns\Support\HasPanelSetup;
 use Atendwa\Msingi\Filament\Pages\Dashboard;
 use Atendwa\Msingi\Http\Middleware\PageVisitActivityLogMiddleware;
 use Atendwa\Msingi\Models\BaseUser;
+use Atendwa\Msingi\Support\SharedPanelProviderPlugins;
 use Atendwa\Settings\SettingsPlugin;
 use Atendwa\Whitelist\WhitelistPlugin;
 use BezhanSalleh\FilamentShield\FilamentShieldPlugin;
@@ -52,7 +53,7 @@ class SystemPanelProvider extends PanelProvider
      */
     protected function plugins(Panel $panel): array
     {
-        return [
+        return app(SharedPanelProviderPlugins::class)->execute()->merge([
             FilamentShieldPlugin::make()->checkboxListColumns(['default' => 1, 'sm' => 2])
                 ->resourceCheckboxListColumns(['default' => 1, 'sm' => 2])
                 ->gridColumns(['default' => 1, 'sm' => 2, 'lg' => 3])
@@ -63,6 +64,6 @@ class SystemPanelProvider extends PanelProvider
             ActionWatchPlugin::make(),
             WhitelistPlugin::make(),
             SettingsPlugin::make(),
-        ];
+        ])->values()->all();
     }
 }

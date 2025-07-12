@@ -23,6 +23,8 @@
         "atendwa/settings": "^1.0",
         "atendwa/support": "^1.0",
         "atendwa/whitelist": "*",
+        "devonab/filament-easy-footer": "^2.0",
+        "eightcedars/filament-inactivity-guard": "^0.4.0",
         "gboquizosanchez/filament-log-viewer": "^1.2",
         "hasnayeen/themes": "^3.0",
         "illuminate/contracts": "^10.0||^11.0||^12.0",
