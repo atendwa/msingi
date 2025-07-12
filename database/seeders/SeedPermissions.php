@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Atendwa\Msingi\Database\Seeders;
 
 use Atendwa\Filakit\Utils\PanelPermissionResolver;
+use Atendwa\Msingi\Providers\Filament\SystemPanelProvider;
 use Atendwa\Seedtrack\Concerns\PreventsDuplicateSeeding;
 use Exception;
 use Illuminate\Database\Seeder;
@@ -21,11 +22,6 @@ class SeedPermissions extends Seeder
      */
     public function execute(): void
     {
-        $inspect = ['viewInsights', 'viewPulse', 'viewHorizon', 'viewTelescope', 'viewLogs'];
-        $this->permissions($inspect);
-
-        Role::updateOrCreate(['name' => 'Developer'], ['name' => 'Developer'])->givePermissionTo($inspect);
-
         $util = app(PanelPermissionResolver::class);
         $panels = filament()->getPanels();
 
@@ -39,6 +35,13 @@ class SeedPermissions extends Seeder
             'shield:generate',
             ['--panel' => $panel->getId(), '--all' => true, '-n' => true, '-q' => true]
         ));
+
+        $inspect = ['viewInsights', 'viewPulse', 'viewHorizon', 'viewTelescope', 'viewLogs'];
+        $this->permissions($inspect);
+
+        Role::updateOrCreate(['name' => 'Developer'], ['name' => 'Developer'])
+            ->givePermissionTo($util->execute(SystemPanelProvider::class))
+            ->givePermissionTo($inspect);
     }
 
     /**
