@@ -29,11 +29,12 @@
                 @php
                     $default = route('welcome');
                     $defaultLinkTitle = 'Home Page';
+
                     if ($auth) {
-                        $hasAccess = auth()->user()->hasAccess('home');
-                        $default = $hasAccess ? panel('home') : $default;
-                        $defaultLinkTitle = $hasAccess ? 'Dashboard' : $defaultLinkTitle;
+                        $defaultLinkTitle = 'Home';
+                        $default = url('/home');
                     }
+
                     $link = $link ?? $default;
 
                     $linkTitle = $linkTitle ?? $defaultLinkTitle;
