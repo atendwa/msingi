@@ -31,6 +31,8 @@ class MsingiServiceProvider extends ServiceProvider
         $this->app->register(PulseServiceProvider::class);
         $this->app->register(MacroServiceProvider::class);
         $this->app->register(SystemPanelProvider::class);
+
+        // todo: command to prune activity logs
     }
 
     /**
