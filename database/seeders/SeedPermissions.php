@@ -25,10 +25,10 @@ class SeedPermissions extends Seeder
         $util = app(PanelPermissionResolver::class);
         $panels = filament()->getPanels();
 
-//        collect($panels)->each(function ($panel) use ($util): void {
-//            $name = $util->execute($panel::class);
-//
-//        });
+        //        collect($panels)->each(function ($panel) use ($util): void {
+        //            $name = $util->execute($panel::class);
+        //
+        //        });
         $name = $util->execute(SystemPanelProvider::class);
         Permission::updateOrCreate(['name' => $name], ['name' => $name]);
 
