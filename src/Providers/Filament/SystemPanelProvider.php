@@ -9,7 +9,6 @@ use Atendwa\Filakit\Utils\PanelPermissionResolver;
 use Atendwa\Msingi\Concerns\Support\HasPanelSetup;
 use Atendwa\Msingi\Filament\Pages\Dashboard;
 use Atendwa\Msingi\Http\Middleware\PageVisitActivityLogMiddleware;
-use Atendwa\Msingi\Models\BaseUser;
 use Atendwa\Msingi\Support\SharedPanelProviderPlugins;
 use Atendwa\Settings\SettingsPlugin;
 use Atendwa\Whitelist\WhitelistPlugin;
