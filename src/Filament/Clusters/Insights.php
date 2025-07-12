@@ -10,5 +10,8 @@ class Insights extends Cluster
 {
     protected static ?string $navigationIcon = 'heroicon-o-chart-bar';
 
-    //    protected static ?int $navigationSort = -1;
+    public static function canAccess(): bool
+    {
+        return auth()->user()?->canAny(['viewHorizon', 'viewPulse', 'viewTelescope', 'viewLogs']) ?? false;
+    }
 }

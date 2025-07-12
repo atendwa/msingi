@@ -177,8 +177,7 @@ class BaseUser extends User implements Auditable, FilamentUser, HasAvatar, HasTe
         $provider = collect(app()->getLoadedProviders())->keys()
             ->filter(fn (string $provider) => str($provider)->contains($name, true));
 
-        return asInstanceOf(app($provider->first(), ['app' => app()]),
-            PanelProvider::class)::canAccess($panel->getId());
+        return asInstanceOf(app($provider->first(), ['app' => app()]), PanelProvider::class)::canAccess($panel->getId());
     }
 
     /**
