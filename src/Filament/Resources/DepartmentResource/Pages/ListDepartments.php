@@ -20,11 +20,11 @@ class ListDepartments extends ListRecords
         $contract = HandlesDepartmentSynchronisation::class;
 
         return [
-            Action::make('sync')->icon('heroicon-o-arrow-path')->color('info')
+            Action::make('sync-departments')->icon('heroicon-o-arrow-path')->color('info')
                 ->action(fn () => asInstanceOf(app($contract), $contract)->sync())
                 ->requiresConfirmation()->visible(every([
-                    boolval(config('foundation.departments.sync_departments')),
                     Gate::allows('create', Department::class),
+                    boolval(config('msingi.models.use_departments')),
                 ])),
         ];
     }
