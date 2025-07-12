@@ -353,8 +353,8 @@ class BaseUser extends User implements Auditable, FilamentUser, HasAvatar, HasTe
         parent::creating(function (User $user): void {
             if (blank($user->getAttribute('name'))) {
                 $name = $user->getAttribute('first_name') . ' ' .
-                    $user->getAttribute('other_names') . ' ' .
-                    $user->getAttribute('surname');
+                    $user->getAttribute('middle_name') . ' ' .
+                    $user->getAttribute('last_name');
 
                 $user->setAttribute('name', str($name)->lower()->headline()->squish()->toString());
             }
@@ -367,7 +367,7 @@ class BaseUser extends User implements Auditable, FilamentUser, HasAvatar, HasTe
 
             Tenant::query()->limit(2)->select($one)->where(fn (Builder $query) => $query
                 ->where($column, $user->string($column))->orWhere($field, true)
-            )->each(fn ($tenant) => $user->teams()->attach($tenant));
+            )->each(fn ($tenant) => $user->teams()->syncWithoutDetaching($tenant));
         });
     }
 

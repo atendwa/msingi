@@ -52,6 +52,7 @@ class Tenant extends Model implements HasCurrentTenantLabel, HasName
     {
         $detach = [];
         $attach = [];
+
         if ($this->wasChanged('head_username')) {
             $detach[] = $this->getAttribute('head_username');
             $attach[] = $this->getAttribute('head_username');
@@ -65,7 +66,7 @@ class Tenant extends Model implements HasCurrentTenantLabel, HasName
         }
 
         $this->users()->detach($detach);
-        $this->users()->attach($attach);
+        $this->users()->syncWithoutDetaching($attach);
     }
 
     /**
@@ -105,13 +106,13 @@ class Tenant extends Model implements HasCurrentTenantLabel, HasName
             $head = $tenant->getAttribute('head_username');
 
             if ($tenant->users->filter(fn (BaseUser $user): bool => $user->getAttribute('username') === $head)->count() === 0) {
-                $tenant->users()->attach($head);
+                $tenant->users()->syncWithoutDetaching($head);
             }
 
             $delegate = $tenant->getAttribute('delegate_username');
 
             if (filled($delegate) && $tenant->users->filter(fn (BaseUser $user): bool => $user->getAttribute('username') === $delegate)->count() === 0) {
-                $tenant->users()->attach($delegate);
+                $tenant->users()->syncWithoutDetaching($delegate);
             }
         });
 
