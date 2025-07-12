@@ -22,7 +22,7 @@ class Tenant extends Model implements HasCurrentTenantLabel, HasName
     {
         $column = 'department_short_name';
 
-        return match ($this->getAttribute('is_default')) {
+        return match ((bool) $this->getAttribute('is_default')) {
             default => asString($this->getAttribute($column) ?? $this->name()),
             true => $this->name(),
         };
