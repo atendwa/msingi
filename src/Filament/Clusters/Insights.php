@@ -14,4 +14,9 @@ class Insights extends Cluster
     {
         return auth()->user()?->canAny(['viewHorizon', 'viewPulse', 'viewTelescope', 'viewLogs']) ?? false;
     }
+
+    public static function shouldRegisterNavigation(): bool
+    {
+        return static::canAccess();
+    }
 }
