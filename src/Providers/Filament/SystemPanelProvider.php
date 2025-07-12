@@ -39,16 +39,16 @@ class SystemPanelProvider extends PanelProvider
             ->discoverPages(app_path('Filament/System/Pages'), 'App\\Filament\\System\\Pages');
     }
 
-//    public static function canAccess(string $id): bool
-//    {
-//        $user = auth()->user();
-//
-//        if (! $user instanceof BaseUser) {
-//            return false;
-//        }
-//
-//        return $user->isPrivileged();
-//    }
+    //    public static function canAccess(string $id): bool
+    //    {
+    //        $user = auth()->user();
+    //
+    //        if (! $user instanceof BaseUser) {
+    //            return false;
+    //        }
+    //
+    //        return $user->isPrivileged();
+    //    }
 
     /**
      * @return Plugin[]
