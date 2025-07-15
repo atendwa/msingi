@@ -31,7 +31,7 @@ class SystemPanelProvider extends PanelProvider
             ->discoverResources(__DIR__ . '/../../Filament/Resources', 'Atendwa\\Msingi\\Filament\\Resources')
             ->discoverClusters(__DIR__ . '/../../Filament/Clusters', 'Atendwa\\Msingi\\Filament\\Clusters')
             ->discoverResources(app_path('Filament/System/Resources'), 'App\\Filament\\System\\Resources')
-            ->navigationItems([NavigationItem::make('home')->url('/home')->icon('heroicon-o-home')])
+            ->navigationItems([NavigationItem::make('Home')->url('/home')->icon('heroicon-o-home')])
             ->discoverWidgets(__DIR__ . '/../../Filament/Widgets', 'Atendwa\\Msingi\\Filament\\Widgets')
             ->discoverClusters(app_path('Filament/System/Clusters'), 'App\\Filament\\System\\Clusters')
             ->discoverWidgets(app_path('Filament/System/Widgets'), 'App\\Filament\\System\\Widgets')
