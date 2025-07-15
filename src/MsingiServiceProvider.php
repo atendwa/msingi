@@ -63,5 +63,8 @@ class MsingiServiceProvider extends ServiceProvider
         }
 
         when(config('app.scheme') === 'https', fn () => URL::forceScheme('https'));
+
+        when(cache()->missing('theme_color'), fn () => cache()->set('theme_color', config('themes.default.theme_color')));
+        when(cache()->missing('theme'), fn () => cache()->set('theme', config('themes.default.theme')));
     }
 }
