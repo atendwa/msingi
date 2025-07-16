@@ -24,7 +24,13 @@ trait BelongsToTenant
 
         static::creating(function (Model $model): void {
             if (blank($model->getAttribute('tenant_id'))) {
-                $model->setAttribute('tenant_id', tenantID());
+                $id = tenantID();
+
+                if (blank($id)) {
+                    $id = systemTenant()->getKey();
+                }
+
+                $model->setAttribute('tenant_id', $id);
             }
         });
 
