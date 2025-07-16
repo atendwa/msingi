@@ -83,3 +83,15 @@ if (! function_exists('activityLog')) {
         ]);
     }
 }
+
+if (! function_exists('isSystemStaff')) {
+    /**
+     * @throws Throwable
+     */
+    function isSystemStaff(): bool
+    {
+        $user = auth()->user();
+
+        return $user instanceof BaseUser && $user->isSystemStaff();
+    }
+}
