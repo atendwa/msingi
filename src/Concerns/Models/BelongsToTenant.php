@@ -18,10 +18,6 @@ trait BelongsToTenant
      */
     public static function bootBelongsToTenant(): void
     {
-        if (! self::isScopedToTenant()) {
-            return;
-        }
-
         static::creating(function (Model $model): void {
             if (blank($model->getAttribute('tenant_id'))) {
                 $id = tenantID();
@@ -34,7 +30,7 @@ trait BelongsToTenant
             }
         });
 
-        if (any([! Filament::getCurrentPanel()?->hasTenancy(), auth()->guest(), app()->runningInConsole()])) {
+        if (any([! Filament::getCurrentPanel()?->hasTenancy(), auth()->guest(), app()->runningInConsole(), ! self::isScopedToTenant()])) {
             return;
         }
 
