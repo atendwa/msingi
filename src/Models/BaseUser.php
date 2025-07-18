@@ -6,7 +6,7 @@ use Atendwa\Filakit\Panel;
 use Atendwa\Filakit\PanelProvider;
 use Atendwa\Msingi\Concerns\Models\AccessSystemInsights;
 use Atendwa\Msingi\Concerns\Models\HasAuditAttributes;
-use Atendwa\Msingi\Contracts\Auditable;
+use Atendwa\Support\Contracts\Auditable;
 use Atendwa\Msingi\Contracts\InsightsUser;
 use Atendwa\Support\Concerns\Models\HasModelUtilities;
 use Atendwa\Support\Concerns\Models\SanitiseNullableColumns;

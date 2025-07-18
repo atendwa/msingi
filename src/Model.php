@@ -6,7 +6,7 @@ namespace Atendwa\Msingi;
 
 use Atendwa\Filakit\Contracts\ModelHasIcon;
 use Atendwa\Msingi\Concerns\Models\HasAuditAttributes;
-use Atendwa\Msingi\Contracts\Auditable;
+use Atendwa\Support\Contracts\Auditable;
 use Atendwa\Support\Concerns\Models\HasModelUtilities;
 use Atendwa\Support\Concerns\Models\SanitiseNullableColumns;
 use Atendwa\Support\Concerns\Models\UsesIsActiveScope;

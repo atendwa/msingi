@@ -8,7 +8,6 @@ use Atendwa\Msingi\Http\Middleware\PageVisitActivityLogMiddleware;
 use Atendwa\Msingi\Providers\Filament\SystemPanelProvider;
 use Atendwa\Msingi\Providers\FilamentActionInteractionLoggerServiceProvider;
 use Atendwa\Msingi\Providers\HorizonServiceProvider;
-use Atendwa\Msingi\Providers\MacroServiceProvider;
 use Atendwa\Msingi\Providers\PulseServiceProvider;
 use Atendwa\Msingi\Providers\TelescopeServiceProvider;
 use Illuminate\Database\Eloquent\Model;
@@ -29,7 +28,6 @@ class MsingiServiceProvider extends ServiceProvider
         $this->app->register(TelescopeServiceProvider::class);
         $this->app->register(HorizonServiceProvider::class);
         $this->app->register(PulseServiceProvider::class);
-        $this->app->register(MacroServiceProvider::class);
         $this->app->register(SystemPanelProvider::class);
 
         // todo: command to prune activity logs
@@ -64,7 +62,9 @@ class MsingiServiceProvider extends ServiceProvider
 
         when(config('app.scheme') === 'https', fn () => URL::forceScheme('https'));
 
-        when(cache()->missing('theme_color'), fn () => cache()->set('theme_color', config('themes.default.theme_color')));
-        when(cache()->missing('theme'), fn () => cache()->set('theme', config('themes.default.theme')));
+        if (! app()->runningInConsole()) {
+            when(cache()->missing('theme_color'), fn () => cache()->set('theme_color', config('themes.default.theme_color')));
+            when(cache()->missing('theme'), fn () => cache()->set('theme', config('themes.default.theme')));
+        }
     }
 }
