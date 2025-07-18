@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace Atendwa\Msingi\Concerns\Models;
 
-use Atendwa\Support\Contracts\Auditable;
 use Atendwa\Msingi\Models\BaseUser;
+use Atendwa\Support\Contracts\Auditable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Throwable;
