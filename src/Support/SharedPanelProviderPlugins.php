@@ -16,9 +16,9 @@ class SharedPanelProviderPlugins
     public function execute(): Collection
     {
         return collect([
-            'EasyFooterPlugin' => EasyFooterPlugin::make()->withLoadTime('Loaded in')->hiddenFromPagesEnabled()
-                ->withLogo('/images/branding/favicon.png', text: 'Powered by ICTS')
-                ->hiddenFromPages(['home/login', 'system/login', 'login']),
+//            'EasyFooterPlugin' => EasyFooterPlugin::make()->withLoadTime('Loaded in')->hiddenFromPagesEnabled()
+//                ->withLogo('/images/branding/favicon.png', text: 'Powered by ICTS')
+//                ->hiddenFromPages(['home/login', 'system/login', 'login']),
             'ThemesPlugin' => ThemesPlugin::make()->canViewThemesPage(fn () => false),
             'FilamentInactivityGuardPlugin' => FilamentInactivityGuardPlugin::make(),
         ]);
