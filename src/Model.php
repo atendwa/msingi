@@ -6,10 +6,10 @@ namespace Atendwa\Msingi;
 
 use Atendwa\Filakit\Contracts\ModelHasIcon;
 use Atendwa\Msingi\Concerns\Models\HasAuditAttributes;
-use Atendwa\Support\Contracts\Auditable;
 use Atendwa\Support\Concerns\Models\HasModelUtilities;
 use Atendwa\Support\Concerns\Models\SanitiseNullableColumns;
 use Atendwa\Support\Concerns\Models\UsesIsActiveScope;
+use Atendwa\Support\Contracts\Auditable;
 use Atendwa\Support\Contracts\Toggleable;
 use Illuminate\Database\Eloquent\SoftDeletes;
 

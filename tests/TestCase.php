@@ -4,8 +4,6 @@ namespace Atendwa\Msingi\Tests;
 
 use Atendwa\Msingi\MsingiServiceProvider;
 use Orchestra\Testbench\TestCase as Orchestra;
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Support\Facades\Artisan;
 
 class TestCase extends Orchestra
 {
