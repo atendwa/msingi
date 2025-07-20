@@ -95,3 +95,17 @@ if (! function_exists('isSystemStaff')) {
         return $user instanceof BaseUser && $user->isSystemStaff();
     }
 }
+
+if (! function_exists('user')) {
+    /**
+     * @throws Throwable
+     */
+    function user(): BaseUser|Illuminate\Contracts\Auth\Authenticatable
+    {
+        $user = auth()->user();
+
+        throw_if(! $user instanceof BaseUser, 'No authenticated user found.');
+
+        return $user;
+    }
+}
