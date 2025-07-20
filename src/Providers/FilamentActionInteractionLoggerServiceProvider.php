@@ -56,6 +56,8 @@ class FilamentActionInteractionLoggerServiceProvider extends ServiceProvider
             $log = $log->performedOn($subject);
         }
 
-        $log->log($user->name() . $type . ' action:' . $name . ' at ' . now()->toDateTimeString());
+        $description = $user->name() . $type . ' action:' . $name . ' at ' . now()->toDateTimeString();
+
+        dispatch(fn () => $log->log($description))->name('filament-action-interaction-log');
     }
 }
