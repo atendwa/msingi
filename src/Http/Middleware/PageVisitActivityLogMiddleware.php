@@ -17,10 +17,10 @@ class PageVisitActivityLogMiddleware
 
         $response = $next($request);
 
-        $log = activityLog()->useLog('Page Visits')->causedBy($user)->event('Page Visit')->performedOn($user);
-        $description = $user->name() . ' visited: ' . $request->path() . ' at ' . now()->toDateTimeString();
-
-        dispatch(fn () => $log->log($description))->name('page-visit-activity-log');
+        \Illuminate\Support\defer(function () use ($request, $user) {
+            activityLog()->useLog('Page Visits')->causedBy($user)->event('Page Visit')->performedOn($user)
+                ->log($user->name() . ' visited: ' . $request->path() . ' at ' . now()->toDateTimeString());
+        });
 
         return $response;
     }
