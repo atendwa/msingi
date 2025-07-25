@@ -71,6 +71,14 @@ trait HasAuditAttributes
     /**
      * @return BelongsTo<BaseUser, $this>
      */
+    public function actioner(): BelongsTo
+    {
+        return $this->belongsTo(BaseUser::class, 'actioned_by');
+    }
+
+    /**
+     * @return BelongsTo<BaseUser, $this>
+     */
     public function restoror(): BelongsTo
     {
         return $this->belongsTo(BaseUser::class, 'restored_by');
