@@ -2,7 +2,7 @@
 
 namespace Atendwa\Msingi\Concerns\Models;
 
-use Core\Models\Category;
+use Atendwa\Msingi\Models\Category;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 trait BelongsToCategory
