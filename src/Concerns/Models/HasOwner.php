@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Concerns;
+namespace Atendwa\Msingi\Concerns\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\MorphTo;
