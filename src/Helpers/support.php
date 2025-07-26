@@ -5,6 +5,7 @@ declare(strict_types=1);
 use Atendwa\Msingi\Models\BaseUser;
 use Atendwa\Msingi\Models\Category;
 use Atendwa\Msingi\Models\Country;
+use Atendwa\Msingi\Support\CheckHorizonStatus;
 use Illuminate\Support\Collection;
 use Spatie\Activitylog\ActivityLogger;
 
@@ -107,5 +108,15 @@ if (! function_exists('user')) {
         throw_if(! $user instanceof BaseUser, 'No authenticated user found.');
 
         return $user;
+    }
+}
+
+if (! function_exists('isHorizonRunning')) {
+    /**
+     * @throws Throwable
+     */
+    function isHorizonRunning(): bool
+    {
+        return app(CheckHorizonStatus::class)->execute();
     }
 }
