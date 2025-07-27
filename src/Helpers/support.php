@@ -50,7 +50,7 @@ if (! function_exists('categories')) {
     {
         $field = 'group';
 
-        return Category::query()->where($field, $group)->select([$id, $column])->pluck($column, $id);
+        return Category::query()->where($field, $group)->select([$id, $column])->pluck($column, $id)->sort();
     }
 }
 
