@@ -35,7 +35,7 @@ class CountryResource extends Resource
             textInput('continent'),
             textInput('flag'),
             textInput('short_code'),
-//            AuditsComponent::form(),
+            //            AuditsComponent::form(),
         ]);
     }
 
