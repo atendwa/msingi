@@ -18,19 +18,15 @@ trait BelongsToTenant
      */
     public static function bootBelongsToTenant(): void
     {
-        static::creating(function (Model $model): void {
-            if (blank($model->getAttribute('tenant_id'))) {
-                $id = tenantID();
+        static::creating(fn (Model $model) => when(
+            blank($model->getAttribute('tenant_id')),
+            fn () => $model->setAttribute('tenant_id', self::fetchTenantId())
+        ));
 
-                if (blank($id)) {
-                    $id = systemTenant()->getKey();
-                }
-
-                $model->setAttribute('tenant_id', $id);
-            }
-        });
-
-        if (any([! Filament::getCurrentPanel()?->hasTenancy(), auth()->guest(), app()->runningInConsole(), ! self::isScopedToTenant()])) {
+        if (any([
+            ! Filament::getCurrentPanel()?->hasTenancy(), auth()->guest(), app()->runningInConsole(),
+            ! self::isScopedToTenant(),
+        ])) {
             return;
         }
 
@@ -58,5 +54,16 @@ trait BelongsToTenant
     public function tenantId(): int
     {
         return (int) $this->string('tenant_id');
+    }
+
+    protected static function fetchTenantId(): int
+    {
+        $id = tenantID();
+
+        if (blank($id)) {
+            $id = systemTenant()->getKey();
+        }
+
+        return $id;
     }
 }
