@@ -41,6 +41,14 @@ trait BelongsToTenant
         return $this->belongsTo(Tenant::class);
     }
 
+    /**
+     * @return BelongsTo<Model, $this>
+     */
+    public function team(): BelongsTo
+    {
+        return $this->belongsTo(Tenant::class, 'tenant_id', 'id');
+    }
+
     public function canFilterByTenant(): bool
     {
         return true;
