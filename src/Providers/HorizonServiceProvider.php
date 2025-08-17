@@ -10,7 +10,10 @@ use Laravel\Horizon\HorizonApplicationServiceProvider;
 
 class HorizonServiceProvider extends HorizonApplicationServiceProvider
 {
-    public function boot(): void {}
+    public function boot(): void
+    {
+        parent::boot();
+    }
 
     protected function gate(): void
     {
