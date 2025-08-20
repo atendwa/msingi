@@ -293,22 +293,7 @@ class BaseUser extends User implements Auditable, FilamentUser, HasAvatar, HasTe
      */
     public function getDefaultTenant(Panel|\Filament\Panel $panel): ?Model
     {
-        $column = 'department_short_name';
-
-        $code = $this->string($column);
-        $tenant = null;
-
-        if (filled($code)) {
-            $tenant = $this->getTenants($panel)
-                ->filter(fn (Tenant $tenant): bool => $tenant->string($column) === $code)
-                ->first();
-        }
-
-        if ($tenant instanceof Tenant) {
-            return $tenant;
-        }
-
-        return defaultTenant();
+        return $this->getTenants($panel)->first();
     }
 
     /**
@@ -397,7 +382,7 @@ class BaseUser extends User implements Auditable, FilamentUser, HasAvatar, HasTe
         $shortname = $this->getAttribute('department_short_name');
         $teams = $this->teams;
 
-        if (blank($shortname)) {
+        if (blank($shortname) || $teams->count() === 1) {
             return $teams;
         }
 
