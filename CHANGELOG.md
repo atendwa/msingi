@@ -2,6 +2,18 @@
 
 All notable changes to `msingi` will be documented in this file.
 
+## v1.0.16 - 2025-08-17
+
+### What's Changed
+
+* chore(deps): bump aglipanci/laravel-pint-action from 2.5 to 2.6 by @dependabot[bot] in https://github.com/atendwa/msingi/pull/2
+
+### New Contributors
+
+* @dependabot[bot] made their first contribution in https://github.com/atendwa/msingi/pull/2
+
+**Full Changelog**: https://github.com/atendwa/msingi/compare/v1.0.15...v1.0.16
+
 ## v1.0.15 - 2025-07-29
 
 **Full Changelog**: https://github.com/atendwa/msingi/compare/v1.0.14...v1.0.15
