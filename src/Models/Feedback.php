@@ -10,5 +10,9 @@ class Feedback extends Model
 {
     public string $icon = 'heroicon-o-chat-bubble-oval-left-ellipsis';
 
+    protected $table = 'feedbacks';
+
+    protected $guarded = ['id'];
+
     // todo: add resource
 }
