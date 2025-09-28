@@ -6,8 +6,8 @@ namespace Atendwa\Msingi;
 
 use Atendwa\Filakit\Contracts\ModelHasIcon;
 use Atendwa\Msingi\Concerns\Models\HasAuditAttributes;
-use Atendwa\Support\Concerns\Models\HasModelUtilities;
 use Atendwa\Support\Concerns\Models\HasDisposableColumns;
+use Atendwa\Support\Concerns\Models\HasModelUtilities;
 use Atendwa\Support\Concerns\Models\SanitiseNullableColumns;
 use Atendwa\Support\Concerns\Models\UsesIsActiveScope;
 use Atendwa\Support\Contracts\Auditable;
@@ -17,11 +17,11 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Model extends \Illuminate\Database\Eloquent\Model implements Auditable, ModelHasIcon, Toggleable
 {
     use HasAuditAttributes;
+    use HasDisposableColumns;
     use HasModelUtilities;
     use SanitiseNullableColumns;
     use SoftDeletes;
     use UsesIsActiveScope;
-    use HasDisposableColumns;
     //    use LogsActivity; // todo
 
     public string $icon = 'heroicon-o-document-text';
