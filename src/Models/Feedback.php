@@ -4,10 +4,13 @@ declare(strict_types=1);
 
 namespace Atendwa\Msingi\Models;
 
+use Atendwa\Msingi\Concerns\Models\BelongsToCategory;
 use Atendwa\Msingi\Model;
 
 class Feedback extends Model
 {
+    use BelongsToCategory;
+
     public string $icon = 'heroicon-o-chat-bubble-oval-left-ellipsis';
 
     protected $table = 'feedbacks';
