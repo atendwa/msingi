@@ -2,6 +2,10 @@
 
 All notable changes to `msingi` will be documented in this file.
 
+## v1.0.19 - 2025-09-28
+
+**Full Changelog**: https://github.com/atendwa/msingi/compare/v1.0.17...v1.0.19
+
 ## v1.0.18 - 2025-08-31
 
 **Full Changelog**: https://github.com/atendwa/msingi/compare/v1.0.17...v1.0.18
