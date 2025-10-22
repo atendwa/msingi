@@ -345,11 +345,11 @@ class BaseUser extends User implements Auditable, FilamentUser, HasAvatar, HasTe
         });
 
         parent::created(function (BaseUser $user): void {
-            self::tenantQuery()->each(fn ($tenant) => $user->teams()->syncWithoutDetaching($tenant));
+            self::tenantQuery($user)->each(fn ($tenant) => $user->teams()->syncWithoutDetaching($tenant));
         });
     }
 
-    protected static function tenantQuery()
+    protected static function tenantQuery($user)
     {
         $column = 'department_short_name';
         $field = 'is_default';
