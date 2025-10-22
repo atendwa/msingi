@@ -349,17 +349,6 @@ class BaseUser extends User implements Auditable, FilamentUser, HasAvatar, HasTe
         });
     }
 
-    private static function tenantQuery()
-    {
-        $column = 'department_short_name';
-        $field = 'is_default';
-        $one = 'id';
-
-        return Tenant::query()
-            ->where(fn (Builder $query) => $query->where($column, $user->string($column))->orWhere($field, true))
-            ->limit(2)->select($one);
-    }
-
     /**
      * @return array<string, string>
      */
@@ -377,6 +366,17 @@ class BaseUser extends User implements Auditable, FilamentUser, HasAvatar, HasTe
     protected function roleNames(): Attribute
     {
         return Attribute::make(fn () => collect($this->roles->pluck('name'))->map(fn ($role) => headline($role))->implode(', '));
+    }
+
+    private static function tenantQuery()
+    {
+        $column = 'department_short_name';
+        $field = 'is_default';
+        $one = 'id';
+
+        return Tenant::query()
+            ->where(fn (Builder $query) => $query->where($column, $user->string($column))->orWhere($field, true))
+            ->limit(2)->select($one);
     }
 
     /**
