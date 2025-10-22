@@ -349,7 +349,7 @@ class BaseUser extends User implements Auditable, FilamentUser, HasAvatar, HasTe
         });
     }
 
-    private static function tenantQuery()
+    protected static function tenantQuery()
     {
         $column = 'department_short_name';
         $field = 'is_default';
