@@ -384,18 +384,18 @@ class BaseUser extends User implements Auditable, FilamentUser, HasAvatar, HasTe
      */
     private function tenants(): Collection
     {
-//        $shortname = $this->getAttribute('department_short_name');
+        //        $shortname = $this->getAttribute('department_short_name');
         $teams = $this->teams;
 
-//        if (blank($shortname) || $teams->count() === 1) {
-//            return $teams;
-//        }
+        //        if (blank($shortname) || $teams->count() === 1) {
+        //            return $teams;
+        //        }
 
         return $teams->filter(fn (Tenant $tenant): bool => $tenant->getAttribute('is_default'));
 
-//        return match ($filtered->isEmpty()) {
-//            false => $filtered,
-//            true => $teams,
-//        };
+        //        return match ($filtered->isEmpty()) {
+        //            false => $filtered,
+        //            true => $teams,
+        //        };
     }
 }
