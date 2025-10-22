@@ -345,14 +345,19 @@ class BaseUser extends User implements Auditable, FilamentUser, HasAvatar, HasTe
         });
 
         parent::created(function (BaseUser $user): void {
-            $column = 'department_short_name';
-            $field = 'is_default';
-            $one = 'id';
-
-            Tenant::query()->limit(2)->select($one)->where(fn (Builder $query) => $query
-                ->where($column, $user->string($column))->orWhere($field, true)
-            )->each(fn ($tenant) => $user->teams()->syncWithoutDetaching($tenant));
+            self::tenantQuery()->each(fn ($tenant) => $user->teams()->syncWithoutDetaching($tenant));
         });
+    }
+
+    private static function tenantQuery()
+    {
+        $column = 'department_short_name';
+        $field = 'is_default';
+        $one = 'id';
+
+        return Tenant::query()
+            ->where(fn (Builder $query) => $query->where($column, $user->string($column))->orWhere($field, true))
+            ->limit(2)->select($one);
     }
 
     /**
