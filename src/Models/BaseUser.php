@@ -345,8 +345,15 @@ class BaseUser extends User implements Auditable, FilamentUser, HasAvatar, HasTe
         });
 
         parent::created(function (BaseUser $user): void {
-            self::tenantQuery($user)->each(fn ($tenant) => $user->teams()->syncWithoutDetaching($tenant));
+            if (self::autoAddToTenant()) {
+                self::tenantQuery($user)->each(fn ($tenant) => $user->teams()->syncWithoutDetaching($tenant));
+            }
         });
+    }
+
+    protected static function autoAddToTenant()
+    {
+        return true;
     }
 
     protected static function tenantQuery($user)
