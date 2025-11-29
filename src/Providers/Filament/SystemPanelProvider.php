@@ -10,11 +10,11 @@ use Atendwa\Msingi\Concerns\Support\HasPanelSetup;
 use Atendwa\Msingi\Filament\Custom\ListLogs;
 use Atendwa\Msingi\Filament\Custom\ViewLog;
 use Atendwa\Msingi\Filament\Pages\Dashboard;
+use Atendwa\Msingi\Filament\Plugins\FilamentShieldPlugin;
 use Atendwa\Msingi\Http\Middleware\PageVisitActivityLogMiddleware;
 use Atendwa\Msingi\Support\SharedPanelProviderPlugins;
 use Atendwa\Settings\SettingsPlugin;
 use Atendwa\Whitelist\WhitelistPlugin;
-use BezhanSalleh\FilamentShield\FilamentShieldPlugin;
 use Boquizo\FilamentLogViewer\FilamentLogViewerPlugin;
 use Filament\Contracts\Plugin;
 use Filament\Navigation\NavigationItem;
@@ -52,9 +52,10 @@ class SystemPanelProvider extends PanelProvider
     protected function plugins(Panel $panel): array
     {
         return app(SharedPanelProviderPlugins::class)->execute()->merge([
-            FilamentShieldPlugin::make()->checkboxListColumns(['default' => 1, 'sm' => 2])
+            FilamentShieldPlugin::make()
                 ->resourceCheckboxListColumns(['default' => 1, 'sm' => 2])
                 ->gridColumns(['default' => 1, 'sm' => 2, 'lg' => 3])
+                ->checkboxListColumns(['default' => 1, 'sm' => 2])
                 ->sectionColumnSpan(1),
             FilamentLogViewerPlugin::make()->navigationIcon('heroicon-s-document-text')
                 ->authorize(fn () => auth()->user()?->can('viewLogs') ?? false)
