@@ -7,6 +7,8 @@ use Atendwa\Filakit\Panel;
 use Atendwa\Filakit\PanelProvider;
 use Atendwa\Filakit\Utils\PanelPermissionResolver;
 use Atendwa\Msingi\Concerns\Support\HasPanelSetup;
+use Atendwa\Msingi\Filament\Custom\ListLogs;
+use Atendwa\Msingi\Filament\Custom\ViewLog;
 use Atendwa\Msingi\Filament\Pages\Dashboard;
 use Atendwa\Msingi\Http\Middleware\PageVisitActivityLogMiddleware;
 use Atendwa\Msingi\Support\SharedPanelProviderPlugins;
@@ -56,6 +58,7 @@ class SystemPanelProvider extends PanelProvider
                 ->sectionColumnSpan(1),
             FilamentLogViewerPlugin::make()->navigationIcon('heroicon-s-document-text')
                 ->authorize(fn () => auth()->user()?->can('viewLogs') ?? false)
+                ->listLogs(ListLogs::class)->viewLog(ViewLog::class)
                 ->navigationLabel('Logs'),
             ActionWatchPlugin::make(),
             WhitelistPlugin::make(),

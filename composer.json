@@ -19,7 +19,7 @@
         "php": "^8.3",
         "atendwa/action-watch": "^1.0",
         "atendwa/filakit": "^1.0",
-        "atendwa/seedtrack": "*",
+        "atendwa/seedtrack": "^1.0",
         "atendwa/settings": "^1.0",
         "atendwa/support": "^1.0",
         "atendwa/whitelist": "*",
