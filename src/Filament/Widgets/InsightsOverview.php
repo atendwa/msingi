@@ -19,7 +19,7 @@ class InsightsOverview extends BaseWidget
 
     protected function getColumns(): int
     {
-        return 3;
+        return count($this->getStats());
     }
 
     protected function getStats(): array
