@@ -30,20 +30,22 @@ class InsightsOverview extends BaseWidget
         Artisan::call('horizon:check-status');
         $status = asString(session('horizon_status'));
 
-        return [
+        $stats = [
             Stat::make('', 'Pulse')->description($pulse ? 'Enabled' : 'Disabled')
                 ->icon('heroicon-o-presentation-chart-line')->url($pulse ? PulsePage::getUrl() : null)
                 ->descriptionColor($pulse ? 'success' : 'danger'),
             Stat::make('', 'Horizon')->icon('heroicon-o-queue-list')->description($status)
                 ->descriptionColor(['Active' => 'success', 'Inactive' => 'danger', 'Paused' => 'warning'][$status])
                 ->url(HorizonPage::getUrl()),
-            Stat::make('', 'Telescope')->descriptionColor($telescope ? 'success' : 'danger')
+        ];
+
+        if (config('telescope.enabled')) {
+            $stats[] = Stat::make('', 'Telescope')->descriptionColor($telescope ? 'success' : 'danger')
                 ->description($telescope ? 'Enabled' : 'Disabled')
                 ->url($telescope ? TelescopePage::getUrl() : null)
-                ->icon('heroicon-o-magnifying-glass'),
-            //            Stat::make('', 'Logs')->icon('heroicon-o-bug-ant')->url(LogViewer::getUrl())
-            //                ->description(ucfirst(asString(config('logging.default')) . ' Channel')),
-            // todo: add log viewer
-        ];
+                ->icon('heroicon-o-magnifying-glass');
+        }
+
+        return $stats;
     }
 }
