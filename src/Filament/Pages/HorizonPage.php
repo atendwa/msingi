@@ -25,4 +25,9 @@ class HorizonPage extends Page
     protected static ?string $slug = 'horizon';
 
     protected ?string $heading = '';
+
+    public static function shouldRegisterNavigation(): bool
+    {
+        return boolval(config('telescope.enabled'));
+    }
 }
