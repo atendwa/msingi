@@ -24,7 +24,7 @@ class Model extends \Illuminate\Database\Eloquent\Model implements Auditable, Mo
     use UsesIsActiveScope;
     //    use LogsActivity; // todo
 
-    public string $icon = 'heroicon-o-document-text';
+    protected string $icon = 'heroicon-o-document-text';
 
     protected $guarded = ['id'];
 
