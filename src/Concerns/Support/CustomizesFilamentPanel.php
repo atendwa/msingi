@@ -7,8 +7,6 @@ namespace Atendwa\Msingi\Concerns\Support;
 use Atendwa\Filakit\Panel;
 use Atendwa\Msingi\Models\Tenant;
 use Filament\Navigation\NavigationItem;
-// use Hasnayeen\Themes\Http\Middleware\SetTheme;
-use Hasnayeen\Themes\Http\Middleware\SetTheme;
 use Throwable;
 
 trait CustomizesFilamentPanel
@@ -28,15 +26,10 @@ trait CustomizesFilamentPanel
      */
     protected function basePanel(Panel $panel): Panel
     {
-        $panel = $panel
+        return $panel
             ->tenant($this->hasTenancy ? Tenant::class : null)
             ->navigationItems($this->navigationItems())
             ->plugins($this->getPlugins($panel));
-
-        return match ($this->hasTenancy) {
-            true => $panel->tenantMiddleware([SetTheme::class]),
-            false => $panel->middleware([SetTheme::class]),
-        };
     }
 
     /**

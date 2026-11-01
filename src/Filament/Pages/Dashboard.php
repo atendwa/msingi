@@ -8,11 +8,11 @@ class Dashboard extends \Filament\Pages\Dashboard
 {
     use HasPageShield;
 
-    protected static string $view = 'filament-panels::pages.dashboard';
+    protected string $view = 'filament-panels::pages.dashboard';
 
-    protected static ?string $activeNavigationIcon = 'heroicon-s-home';
+    protected static string | \BackedEnum | null $activeNavigationIcon = 'heroicon-s-home';
 
-    protected static ?string $navigationIcon = 'heroicon-o-home';
+    protected static string | \BackedEnum | null $navigationIcon = 'heroicon-o-home';
 
     protected ?string $heading = '';
 

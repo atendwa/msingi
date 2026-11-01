@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Atendwa\Msingi\Filament\Resources;
 
+use Filament\Schemas\Schema;
 use Atendwa\Filakit\Concerns\CustomizesFilamentResource;
 use Atendwa\Filakit\Resource;
 use Atendwa\Msingi\Filament\Clusters\Core;
@@ -12,7 +13,6 @@ use Atendwa\Msingi\Filament\Resources\DepartmentResource\Pages\EditDepartment;
 use Atendwa\Msingi\Filament\Resources\DepartmentResource\Pages\ListDepartments;
 use Atendwa\Msingi\Filament\Resources\DepartmentResource\Pages\ViewDepartment;
 use Atendwa\Msingi\Models\Department;
-use Filament\Forms\Form;
 use Filament\Resources\Pages\PageRegistration;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
@@ -29,9 +29,9 @@ class DepartmentResource extends Resource
 
     protected static ?int $navigationSort = 6;
 
-    public static function form(Form $form): Form
+    public static function form(Schema $schema): Schema
     {
-        return $form->schema([
+        return $schema->components([
             textInput('name'),
             textInput('short_name'),
             relationship('head', 'username', false, 'head_username')

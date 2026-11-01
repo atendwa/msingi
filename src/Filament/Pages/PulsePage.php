@@ -12,11 +12,11 @@ class PulsePage extends Page
 {
     use HasInsightPageGate;
 
-    protected static ?string $activeNavigationIcon = 'heroicon-s-presentation-chart-line';
+    protected static string | \BackedEnum | null $activeNavigationIcon = 'heroicon-s-presentation-chart-line';
 
-    protected static ?string $navigationIcon = 'heroicon-o-presentation-chart-line';
+    protected static string | \BackedEnum | null $navigationIcon = 'heroicon-o-presentation-chart-line';
 
-    protected static string $view = 'msingi::filament.pulse';
+    protected string $view = 'msingi::filament.pulse';
 
     protected static ?string $cluster = Insights::class;
 

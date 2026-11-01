@@ -2,6 +2,7 @@
 
 declare(strict_types=1);
 
+use Illuminate\Contracts\Auth\Authenticatable;
 use Atendwa\Msingi\Models\BaseUser;
 use Atendwa\Msingi\Models\Category;
 use Atendwa\Msingi\Models\Country;
@@ -101,7 +102,7 @@ if (! function_exists('user')) {
     /**
      * @throws Throwable
      */
-    function user(): BaseUser|Illuminate\Contracts\Auth\Authenticatable
+    function user(): BaseUser|Authenticatable
     {
         $user = auth()->user();
 

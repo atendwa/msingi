@@ -16,8 +16,8 @@ class ListLogs extends \Boquizo\FilamentLogViewer\Pages\ListLogs
     public static function table(Table $table): Table
     {
         return LogsTable::configure($table)
-            ->actions([ViewLogAction::make(), DownloadAction::make()])
-            ->bulkActions([DownloadBulkAction::make()]);
+            ->recordActions([ViewLogAction::make(), DownloadAction::make()])
+            ->toolbarActions([DownloadBulkAction::make()]);
     }
 
     public static function getNavigationGroup(): ?string

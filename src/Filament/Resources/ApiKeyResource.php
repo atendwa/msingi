@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Atendwa\Msingi\Filament\Resources;
 
+use Filament\Schemas\Schema;
 use Atendwa\Filakit\Concerns\CustomizesFilamentResource;
 use Atendwa\Filakit\Resource;
 use Atendwa\Msingi\Filament\Clusters\Core;
@@ -12,7 +13,6 @@ use Atendwa\Msingi\Filament\Resources\ApiKeyResource\Pages\ListApiKeys;
 use Atendwa\Msingi\Filament\Resources\ApiKeyResource\Pages\ViewApiKeys;
 use Atendwa\Msingi\Models\ApiKey;
 use Filament\Forms\Components\DatePicker;
-use Filament\Forms\Form;
 use Filament\Resources\Pages\PageRegistration;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
@@ -31,9 +31,9 @@ class ApiKeyResource extends Resource
 
     protected static ?int $navigationSort = 4;
 
-    public static function form(Form $form): Form
+    public static function form(Schema $schema): Schema
     {
-        return $form->schema([
+        return $schema->components([
             textInput('name'),
             DatePicker::make('expires_at')->after(today()->toDateString())->format('Y-m-d')->nullable(),
         ]);

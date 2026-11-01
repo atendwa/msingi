@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Atendwa\Msingi\Filament\Resources;
 
+use Filament\Schemas\Schema;
 use Atendwa\Filakit\Concerns\CustomizesFilamentResource;
 use Atendwa\Filakit\Resource;
 use Atendwa\Msingi\Filament\Clusters\Core;
@@ -14,7 +15,6 @@ use Atendwa\Msingi\Filament\Resources\CategoryResource\Pages\ViewCategory;
 use Atendwa\Msingi\Models\Category;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Toggle;
-use Filament\Forms\Form;
 use Filament\Resources\Pages\PageRegistration;
 use Filament\Tables\Columns\IconColumn;
 use Filament\Tables\Columns\TextColumn;
@@ -31,9 +31,9 @@ class CategoryResource extends Resource
 
     protected static ?int $navigationSort = 7;
 
-    public static function form(Form $form): Form
+    public static function form(Schema $schema): Schema
     {
-        return $form->schema([
+        return $schema->components([
             TextInput::make('name'),
             TextInput::make('group'),
             Toggle::make('is_active'),

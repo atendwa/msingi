@@ -8,7 +8,7 @@ use Filament\Clusters\Cluster;
 
 class BasicData extends Cluster
 {
-    protected static ?string $navigationIcon = 'heroicon-o-rocket-launch';
+    protected static string | \BackedEnum | null $navigationIcon = 'heroicon-o-rocket-launch';
 
     protected static ?int $navigationSort = -1;
 }

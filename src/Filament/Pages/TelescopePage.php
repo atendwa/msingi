@@ -12,11 +12,11 @@ class TelescopePage extends Page
 {
     use HasInsightPageGate;
 
-    protected static ?string $activeNavigationIcon = 'heroicon-s-magnifying-glass';
+    protected static string | \BackedEnum | null $activeNavigationIcon = 'heroicon-s-magnifying-glass';
 
-    protected static ?string $navigationIcon = 'heroicon-o-magnifying-glass';
+    protected static string | \BackedEnum | null $navigationIcon = 'heroicon-o-magnifying-glass';
 
-    protected static string $view = 'msingi::filament.telescope';
+    protected string $view = 'msingi::filament.telescope';
 
     protected static ?string $permission = 'viewTelescope';
 

@@ -17,16 +17,15 @@
     ],
     "require": {
         "php": "^8.3",
-        "atendwa/action-watch": "^1.0",
-        "atendwa/filakit": "^1.0",
-        "atendwa/seedtrack": "^1.0",
-        "atendwa/settings": "^1.0",
-        "atendwa/support": "^1.0",
-        "atendwa/whitelist": "*",
-        "eightcedars/filament-inactivity-guard": "^0.4.0",
-        "gboquizosanchez/filament-log-viewer": "^1.2",
-        "hasnayeen/themes": "^3.0",
-        "illuminate/contracts": "^10.0||^11.0||^12.0",
+        "atendwa/action-watch": "^2.0",
+        "atendwa/filakit": "^2.0",
+        "atendwa/seedtrack": "^2.0",
+        "atendwa/settings": "^2.0",
+        "atendwa/support": "^2.0",
+        "atendwa/whitelist": "^2.0",
+        "eightcedars/filament-inactivity-guard": "^1.1",
+        "gboquizosanchez/filament-log-viewer": "^2.4",
+        "illuminate/contracts": "^12.0||^13.0",
         "laravel/horizon": "^5.33",
         "laravel/pulse": "^1.4",
         "laravel/sanctum": "*",
@@ -52,7 +51,9 @@
             "Atendwa\\Msingi\\": "src/",
             "Atendwa\\Msingi\\Database\\Seeders\\": "database/seeders/"
         },
-        "files": ["src/helpers.php"]
+        "files": [
+            "src/helpers.php"
+        ]
     },
     "autoload-dev": {
         "psr-4": {

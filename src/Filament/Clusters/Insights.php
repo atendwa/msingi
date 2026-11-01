@@ -8,7 +8,7 @@ use Filament\Clusters\Cluster;
 
 class Insights extends Cluster
 {
-    protected static ?string $navigationIcon = 'heroicon-o-chart-bar';
+    protected static string | \BackedEnum | null $navigationIcon = 'heroicon-o-chart-bar';
 
     public static function canAccess(): bool
     {

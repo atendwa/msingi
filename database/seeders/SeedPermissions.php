@@ -34,7 +34,7 @@ class SeedPermissions extends Seeder
 
         collect($panels)->each(fn ($panel) => Artisan::call(
             'shield:generate',
-            ['--panel' => $panel->getId(), '--all' => true, '-n' => true, '-q' => true]
+            ['--panel' => $panel->getId(), '--all' => true, '--option' => 'permissions', '-n' => true, '-q' => true]
         ));
 
         $inspect = ['viewInsights', 'viewPulse', 'viewHorizon', 'viewTelescope', 'viewLogs'];

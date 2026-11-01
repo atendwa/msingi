@@ -4,7 +4,6 @@ namespace Atendwa\Msingi\Concerns\Support;
 
 use Atendwa\Filakit\Panel;
 use Atendwa\Msingi\Models\Tenant;
-use Hasnayeen\Themes\Http\Middleware\SetTheme;
 
 trait HasPanelSetup
 {
@@ -15,13 +14,6 @@ trait HasPanelSetup
 
     protected function setupPanel(Panel $panel): Panel
     {
-        if ($this->hasTenancy) {
-            $panel = $panel->tenant(Tenant::class);
-        }
-
-        return match ($this->hasTenancy) {
-            true => $panel->tenantMiddleware([SetTheme::class]),
-            false => $panel->middleware([SetTheme::class]),
-        };
+        return $this->hasTenancy ? $panel->tenant(Tenant::class) : $panel;
     }
 }

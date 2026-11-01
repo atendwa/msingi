@@ -2,7 +2,7 @@
 
 namespace Atendwa\Msingi\Support;
 
-use Filament\Forms\Components\Section;
+use Filament\Schemas\Components\Section;
 use Illuminate\Database\Eloquent\Model;
 
 class AuditsComponent
@@ -14,9 +14,9 @@ class AuditsComponent
             ->schema([]);
     }
 
-    public static function infolist(): \Filament\Infolists\Components\Section
+    public static function infolist(): Section
     {
-        return \Filament\Infolists\Components\Section::make('Audits')->collapsible()->persistCollapsed()
+        return Section::make('Audits')->collapsible()->persistCollapsed()
             ->visible(fn (?Model $model) => $model && permission('audit', model: $model))->collapsed()
             ->columns(1)->schema([]);
     }

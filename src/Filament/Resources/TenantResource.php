@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Atendwa\Msingi\Filament\Resources;
 
+use Filament\Schemas\Schema;
 use Atendwa\Filakit\Concerns\CustomizesFilamentResource;
 use Atendwa\Filakit\Resource;
 use Atendwa\Msingi\Filament\Clusters\Core;
@@ -12,7 +13,6 @@ use Atendwa\Msingi\Filament\Resources\TenantResource\Pages\EditTenant;
 use Atendwa\Msingi\Filament\Resources\TenantResource\Pages\ListTenants;
 use Atendwa\Msingi\Filament\Resources\TenantResource\Pages\ViewTenant;
 use Atendwa\Msingi\Models\Tenant;
-use Filament\Forms\Form;
 use Filament\Resources\Pages\PageRegistration;
 use Filament\Tables\Table;
 use Throwable;
@@ -27,9 +27,9 @@ class TenantResource extends Resource
 
     protected static ?int $navigationSort = 1;
 
-    public static function form(Form $form): Form
+    public static function form(Schema $schema): Schema
     {
-        return $form->schema([
+        return $schema->components([
             textInput('name'),
             textInput('description'),
             relationship('head', 'username', true, 'head_username')

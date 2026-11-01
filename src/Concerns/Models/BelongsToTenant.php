@@ -24,7 +24,7 @@ trait BelongsToTenant
         ));
 
         if (any([
-            ! Filament::getCurrentPanel()?->hasTenancy(), auth()->guest(), app()->runningInConsole(),
+            ! Filament::getCurrentOrDefaultPanel()?->hasTenancy(), auth()->guest(), app()->runningInConsole(),
             ! self::isScopedToTenant(),
         ])) {
             return;

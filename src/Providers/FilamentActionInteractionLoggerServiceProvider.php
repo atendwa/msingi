@@ -2,8 +2,9 @@
 
 namespace Atendwa\Msingi\Providers;
 
+use Filament\Actions\Action;
+use function Illuminate\Support\defer;
 use Exception;
-use Filament\Actions\MountableAction;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\ServiceProvider;
 
@@ -22,7 +23,7 @@ class FilamentActionInteractionLoggerServiceProvider extends ServiceProvider
     {
         // todo: confirm export and import actions are covered by this
 
-        MountableAction::configureUsing(function (MountableAction $action): void {
+        Action::configureUsing(function (Action $action): void {
             $this->logName = 'Action Interaction Log';
 
             $action->before(fn () => $this->log($action))->after(fn () => $this->log($action, false));
@@ -32,7 +33,7 @@ class FilamentActionInteractionLoggerServiceProvider extends ServiceProvider
     /**
      * @throws Exception
      */
-    protected function log(MountableAction $action, bool $isBefore = true): void
+    protected function log(Action $action, bool $isBefore = true): void
     {
         $name = $action->getName();
         $user = auth()->user();
@@ -58,6 +59,6 @@ class FilamentActionInteractionLoggerServiceProvider extends ServiceProvider
 
         $description = $user->name() . $type . ' action:' . $name . ' at ' . now()->toDateTimeString();
 
-        \Illuminate\Support\defer(fn () => $log->log($description))->name('filament-action-interaction-log');
+        defer(fn () => $log->log($description))->name('filament-action-interaction-log');
     }
 }

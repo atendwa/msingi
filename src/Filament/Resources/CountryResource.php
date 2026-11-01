@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Atendwa\Msingi\Filament\Resources;
 
+use Filament\Schemas\Schema;
 use Atendwa\Filakit\Concerns\CustomizesFilamentResource;
 use Atendwa\Filakit\Resource;
 use Atendwa\Msingi\Filament\Clusters\Core;
@@ -13,7 +14,6 @@ use Atendwa\Msingi\Filament\Resources\CountryResource\Pages\ListCountries;
 use Atendwa\Msingi\Filament\Resources\CountryResource\Pages\ViewCountry;
 use Atendwa\Msingi\Models\Country;
 use Atendwa\Msingi\Support\AuditsComponent;
-use Filament\Forms\Form;
 use Filament\Resources\Pages\PageRegistration;
 use Filament\Tables\Table;
 use Throwable;
@@ -28,9 +28,9 @@ class CountryResource extends Resource
 
     protected static ?int $navigationSort = 8;
 
-    public static function form(Form $form): Form
+    public static function form(Schema $schema): Schema
     {
-        return $form->schema([
+        return $schema->components([
             textInput('name'),
             textInput('continent'),
             textInput('flag'),
