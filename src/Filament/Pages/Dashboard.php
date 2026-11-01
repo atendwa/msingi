@@ -8,8 +8,6 @@ class Dashboard extends \Filament\Pages\Dashboard
 {
     use HasPageShield;
 
-    protected string $view = 'filament-panels::pages.dashboard';
-
     protected static string | \BackedEnum | null $activeNavigationIcon = 'heroicon-s-home';
 
     protected static string | \BackedEnum | null $navigationIcon = 'heroicon-o-home';

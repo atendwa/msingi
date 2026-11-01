@@ -35,7 +35,7 @@ class InsightsOverview extends BaseWidget
                 ->icon('heroicon-o-presentation-chart-line')->url($pulse ? PulsePage::getUrl() : null)
                 ->descriptionColor($pulse ? 'success' : 'danger'),
             Stat::make('', 'Horizon')->icon('heroicon-o-queue-list')->description($status)
-                ->descriptionColor(['Active' => 'success', 'Inactive' => 'danger', 'Paused' => 'warning'][$status])
+                ->descriptionColor(['Active' => 'success', 'Inactive' => 'danger', 'Paused' => 'warning'][$status] ?? 'gray')
                 ->url(HorizonPage::getUrl()),
         ];
 
