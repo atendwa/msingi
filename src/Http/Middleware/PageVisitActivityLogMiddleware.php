@@ -2,9 +2,9 @@
 
 namespace Atendwa\Msingi\Http\Middleware;
 
-use function Illuminate\Support\defer;
 use Closure;
 use Illuminate\Http\Request;
+use function Illuminate\Support\defer;
 
 class PageVisitActivityLogMiddleware
 {

@@ -2,10 +2,10 @@
 
 namespace Atendwa\Msingi\Providers;
 
-use Filament\Actions\Action;
-use function Illuminate\Support\defer;
 use Exception;
+use Filament\Actions\Action;
 use Illuminate\Database\Eloquent\Model;
+use function Illuminate\Support\defer;
 use Illuminate\Support\ServiceProvider;
 
 class FilamentActionInteractionLoggerServiceProvider extends ServiceProvider

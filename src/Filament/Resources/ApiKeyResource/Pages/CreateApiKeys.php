@@ -39,7 +39,7 @@ class CreateApiKeys extends CreateRecord
             notify($throwable)->error('Failed to create API key.');
         }
 
-        return new ApiKey();
+        return new ApiKey;
     }
 
     protected function getCreatedNotification(): ?Notification

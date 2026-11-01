@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-use Illuminate\Contracts\Auth\Authenticatable;
 use Atendwa\Msingi\Models\BaseUser;
 use Atendwa\Msingi\Models\Category;
 use Atendwa\Msingi\Models\Country;
 use Atendwa\Msingi\Support\CheckHorizonStatus;
+use Illuminate\Contracts\Auth\Authenticatable;
 use Illuminate\Support\Collection;
 use Spatie\Activitylog\ActivityLogger;
 

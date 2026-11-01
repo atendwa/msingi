@@ -26,7 +26,7 @@ class ViewDepartment extends ViewRecord
         $department = asInstanceOf($this->record, Department::class);
 
         return [
-            Action::make('make-tenant')->label('Make Tenant')->icon((new Tenant())->getIcon())
+            Action::make('make-tenant')->label('Make Tenant')->icon((new Tenant)->getIcon())
                 ->color('success')->requiresConfirmation()->visible(blank($department->tenant))
                 ->action(function () use ($department): void {
                     try {

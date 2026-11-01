@@ -30,7 +30,7 @@ trait BelongsToTenant
             return;
         }
 
-        static::addGlobalScope(new TenantScope());
+        static::addGlobalScope(new TenantScope);
     }
 
     /**

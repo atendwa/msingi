@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Atendwa\Msingi\Filament\Resources;
 
-use Filament\Schemas\Schema;
 use Atendwa\Filakit\Concerns\CustomizesFilamentResource;
 use Atendwa\Filakit\Resource;
 use Atendwa\Msingi\Filament\Clusters\Core;
@@ -15,6 +14,7 @@ use Atendwa\Msingi\Filament\Resources\CountryResource\Pages\ViewCountry;
 use Atendwa\Msingi\Models\Country;
 use Atendwa\Msingi\Support\AuditsComponent;
 use Filament\Resources\Pages\PageRegistration;
+use Filament\Schemas\Schema;
 use Filament\Tables\Table;
 use Throwable;
 

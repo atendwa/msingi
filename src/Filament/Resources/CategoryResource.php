@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Atendwa\Msingi\Filament\Resources;
 
-use Filament\Schemas\Schema;
 use Atendwa\Filakit\Concerns\CustomizesFilamentResource;
 use Atendwa\Filakit\Resource;
 use Atendwa\Msingi\Filament\Clusters\Core;
@@ -16,6 +15,7 @@ use Atendwa\Msingi\Models\Category;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Toggle;
 use Filament\Resources\Pages\PageRegistration;
+use Filament\Schemas\Schema;
 use Filament\Tables\Columns\IconColumn;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;

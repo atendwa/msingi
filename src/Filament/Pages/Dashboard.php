@@ -2,15 +2,16 @@
 
 namespace Atendwa\Msingi\Filament\Pages;
 
+use BackedEnum;
 use BezhanSalleh\FilamentShield\Traits\HasPageShield;
 
 class Dashboard extends \Filament\Pages\Dashboard
 {
     use HasPageShield;
 
-    protected static string | \BackedEnum | null $activeNavigationIcon = 'heroicon-s-home';
+    protected static string|BackedEnum|null $activeNavigationIcon = 'heroicon-s-home';
 
-    protected static string | \BackedEnum | null $navigationIcon = 'heroicon-o-home';
+    protected static string|BackedEnum|null $navigationIcon = 'heroicon-o-home';
 
     protected ?string $heading = '';
 

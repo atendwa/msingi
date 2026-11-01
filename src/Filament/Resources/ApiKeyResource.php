@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Atendwa\Msingi\Filament\Resources;
 
-use Filament\Schemas\Schema;
 use Atendwa\Filakit\Concerns\CustomizesFilamentResource;
 use Atendwa\Filakit\Resource;
 use Atendwa\Msingi\Filament\Clusters\Core;
@@ -14,6 +13,7 @@ use Atendwa\Msingi\Filament\Resources\ApiKeyResource\Pages\ViewApiKeys;
 use Atendwa\Msingi\Models\ApiKey;
 use Filament\Forms\Components\DatePicker;
 use Filament\Resources\Pages\PageRegistration;
+use Filament\Schemas\Schema;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;

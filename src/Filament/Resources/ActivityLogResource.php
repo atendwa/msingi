@@ -4,16 +4,17 @@ declare(strict_types=1);
 
 namespace Atendwa\Msingi\Filament\Resources;
 
-use Filament\Schemas\Schema;
 use Atendwa\Filakit\Concerns\CustomizesFilamentResource;
 use Atendwa\Filakit\Resource;
 use Atendwa\Msingi\Filament\Clusters\Core;
 use Atendwa\Msingi\Filament\Resources\ActivityLogResource\Pages\ListActivityLogs;
 use Atendwa\Msingi\Filament\Resources\ActivityLogResource\Pages\ViewActivityLog;
 use Atendwa\Msingi\Models\ActivityLog;
-use Filament\Schemas\Components\Fieldset;
+use BackedEnum;
 use Filament\Infolists\Components\KeyValueEntry;
 use Filament\Resources\Pages\PageRegistration;
+use Filament\Schemas\Components\Fieldset;
+use Filament\Schemas\Schema;
 use Filament\Tables\Table;
 use Illuminate\Support\Collection;
 use Throwable;
@@ -24,9 +25,9 @@ class ActivityLogResource extends Resource
 
     protected static ?string $recordTitleAttribute = 'event';
 
-    protected static string | \BackedEnum | null $activeNavigationIcon = 'heroicon-s-document-text';
+    protected static string|BackedEnum|null $activeNavigationIcon = 'heroicon-s-document-text';
 
-    protected static string | \BackedEnum | null $navigationIcon = 'heroicon-o-document-text';
+    protected static string|BackedEnum|null $navigationIcon = 'heroicon-o-document-text';
 
     protected static ?string $model = ActivityLog::class;
 
@@ -49,7 +50,7 @@ class ActivityLogResource extends Resource
         $old = is_array($old) ? $old : [];
 
         return $schema->components([
-            \Filament\Schemas\Components\Fieldset::make('')->columns(3)->schema([
+            Fieldset::make('')->columns(3)->schema([
                 textEntry('log_name'),
                 textEntry('event'),
                 textEntry('description'),

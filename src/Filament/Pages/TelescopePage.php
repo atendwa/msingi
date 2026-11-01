@@ -6,15 +6,16 @@ namespace Atendwa\Msingi\Filament\Pages;
 
 use Atendwa\Msingi\Concerns\Support\HasInsightPageGate;
 use Atendwa\Msingi\Filament\Clusters\Insights;
+use BackedEnum;
 use Filament\Pages\Page;
 
 class TelescopePage extends Page
 {
     use HasInsightPageGate;
 
-    protected static string | \BackedEnum | null $activeNavigationIcon = 'heroicon-s-magnifying-glass';
+    protected static string|BackedEnum|null $activeNavigationIcon = 'heroicon-s-magnifying-glass';
 
-    protected static string | \BackedEnum | null $navigationIcon = 'heroicon-o-magnifying-glass';
+    protected static string|BackedEnum|null $navigationIcon = 'heroicon-o-magnifying-glass';
 
     protected string $view = 'msingi::filament.telescope';
 

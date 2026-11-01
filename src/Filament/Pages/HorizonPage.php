@@ -6,15 +6,16 @@ namespace Atendwa\Msingi\Filament\Pages;
 
 use Atendwa\Msingi\Concerns\Support\HasInsightPageGate;
 use Atendwa\Msingi\Filament\Clusters\Insights;
+use BackedEnum;
 use Filament\Pages\Page;
 
 class HorizonPage extends Page
 {
     use HasInsightPageGate;
 
-    protected static string | \BackedEnum | null $activeNavigationIcon = 'heroicon-s-queue-list';
+    protected static string|BackedEnum|null $activeNavigationIcon = 'heroicon-s-queue-list';
 
-    protected static string | \BackedEnum | null $navigationIcon = 'heroicon-o-queue-list';
+    protected static string|BackedEnum|null $navigationIcon = 'heroicon-o-queue-list';
 
     protected string $view = 'msingi::filament.horizon';
 
